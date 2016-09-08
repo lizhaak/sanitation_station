@@ -23,7 +23,26 @@
       <div id="map">
 
         <ng-map zoom="11" center="[44.75, -92.87]">
+
+          <custom-marker position="[44.75, -92.87]">
+            <div class="customer-marker">
+              <div class="address">1303 Eagle Bluff Drive</div>
+              <div class="address">Hastings, MN 55033</div>
+              <div class="accountNum"><span>Account #: </span>1234</div>
+              <div class="customerActive">
+                <button ng-click="activate()">Activate</button>
+              </div>
+              <div class="customerWarn">
+                <button ng-click="warning()">Warning</button>
+              </div>
+              <div class="customerCancel">
+                <button ng-click="cancel()">Cancel</button>
+              </div>
+            </div>
+          </custom-marker>
           <marker position="[44.75, -92.87]" />
+          <marker position="[44.751826, -92.876275]" />
+          <marker position="[44.753769, -92.880137]" />
           <!-- <shape name="circle" radius="400" center="[40.74,-74.18]" /> -->
           <control name="overviewMap" opened="true" />
         </ng-map>

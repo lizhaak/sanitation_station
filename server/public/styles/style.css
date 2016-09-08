@@ -2,7 +2,6 @@
     background-color: #00897B;
     text-align: center;
 }
-
 /*button.md-raised.loginBtn.md-button.md-ink-ripple {
     background-color: #1565C0;
     color: white;
@@ -11,38 +10,105 @@
 span.ng-scope {
     color: #1565C0;
 }*/
-
 input#input_0 {
     width: 250px;
     margin-bottom: 25px;
 }
-
 .md-button.md-accent {
     color: #3D5AFE;
 }
-
 md-nav-bar md-nav-ink-bar {
     color: #3D5AFE;
     background: #3D5AFE;
 }
-
 #map {
     height: 500px;
     width: 600px;
     margin: 25px;
 }
 
-/*.loginUsage section {
-  margin: 1em;
-  position: relative !important;
-}*/
+.custom-marker {
+  font-size: 1.5em;
+  padding: 10px;
+  background-color: #fff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: #7F7F7F solid 1px;
+}
 
-/*.loginUsage md-content {
-  margin-right: 7px; }*/
-
-/*.loginUsage section .md-button {
-  margin-top: 16px;
-  margin-bottom: 16px; }*/
-
-  /*.loginUsage md-grid-tile {
-    transition: all 400ms ease-out 50ms; }*/
+.custom-marker:after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 7px 6px 0;
+  border-color: #fff transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  margin-left: -6px;
+  bottom: -6px;
+  left: 50%;
+}
+.custom-marker:before {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 7px 6px 0;
+  border-color: #7F7F7F transparent;
+  display: block;
+  width: 0;
+  z-index: 0;
+  margin-left: -6px;
+  bottom: -7px;
+  left: 50%;
+}
+.customerActive > button {
+  width: 165px;
+  background-color: green;
+  color: white;
+  margin: 2px 0;
+  border: 1px solid green;
+  border-radius: 5px;
+}
+.customerActive > button:hover {
+  background-color: white;
+  color: green;
+}
+.customerWarn > button {
+  width: 165px;
+  background-color: #FF6F00;
+  color: white;
+  margin: 2px 0;
+  border: 1px solid #FF6F00;
+  border-radius: 5px;
+}
+.customerWarn > button:hover {
+  background-color: white;
+  color: #FF6F00;
+}
+.customerCancel > button  {
+  width: 165px;
+  background-color: #B0BEC5;
+  color: white;
+  margin: 2px 0;
+  border: 1px solid #B0BEC5;
+  border-radius: 5px;
+}
+.customerCancel > button:hover  {
+  background-color: white;
+  color: #B0BEC5;
+}
+.accountNum {
+  font-size: 14px;
+  background-color: #90CAF9;
+  margin: 0 0 2px 0;
+  padding: 0 0 0 3px;
+}
+.accountNum > span {
+  font-weight: bold;
+}
+.address {
+  font-size: 16px;
+  margin: 0 0 2px 0;
+}
