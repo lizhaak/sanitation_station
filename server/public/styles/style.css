@@ -26,6 +26,12 @@ md-nav-bar md-nav-ink-bar {
     background: #3D5AFE;
 }
 
+#map {
+    height: 500px;
+    width: 600px;
+    margin: 25px;
+}
+
 /*.loginUsage section {
   margin: 1em;
   position: relative !important;

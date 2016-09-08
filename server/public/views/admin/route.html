@@ -18,9 +18,19 @@
       <md-nav-item md-nav-click="goto('/admin/routes')" name="page2">Routes</md-nav-item>
       <md-nav-item md-nav-click="goto('/admin/employees')" name="page3">Invoicing</md-nav-item>
     </md-nav-bar>
-    <!-- <div class="ext-content">
-      External content for `<span>{{currentNavItem}}</span>`
-    </div> -->
+    <div class="ext-content">
+      <!-- External content for `<span>{{currentNavItem}}</span>` -->
+      <div id="map">
+
+        <ng-map zoom="11" center="[44.75, -92.87]">
+          <marker position="[44.75, -92.87]" />
+          <!-- <shape name="circle" radius="400" center="[40.74,-74.18]" /> -->
+          <control name="overviewMap" opened="true" />
+        </ng-map>
+
+      </div>
+
+    </div>
   </md-content>
 </div>
 

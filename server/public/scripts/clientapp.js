@@ -1,4 +1,4 @@
-var ssApp = angular.module("ssApp", ["ngRoute", "ngMaterial"]);
+var ssApp = angular.module("ssApp", ["ngRoute", "ngMaterial", "ngMap"]);
 
 ssApp.config(["$routeProvider", function($routeProvider) {
   $routeProvider.

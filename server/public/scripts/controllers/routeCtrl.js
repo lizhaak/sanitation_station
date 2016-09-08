@@ -3,6 +3,7 @@ ssApp.controller("RouteCtrl", ["$scope", "$http", "$location", function($scope, 
 
 }]);
 
+
 // ssApp.run(function() {
 //   console.log("ssApp is ready!");
 // });
