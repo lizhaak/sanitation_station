@@ -22,9 +22,13 @@ ssApp.config(["$routeProvider", function($routeProvider) {
       templateUrl: "/views/admin/routes.html",
       controller: "AdminRoutesCtrl"
     }).
-    when("/admin/routes/:route_id", {
+    // when("/admin/routes/:route_id", {
+    //   templateUrl: "/views/admin/route.html",
+    //   controller: "RouteCtrl"
+    // }).
+    when("/admin/routes/1", {
       templateUrl: "/views/admin/route.html",
-      controller: "AdminSingleRouteCtrl"
+      controller: "RouteCtrl"
     }).
     when("/admin/routes/new_route", {
       templateUrl: "/views/admin/new_route.html",

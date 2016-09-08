@@ -17,6 +17,14 @@ input#input_0 {
     margin-bottom: 25px;
 }
 
+.md-button.md-accent {
+    color: #3D5AFE;
+}
+
+md-nav-bar md-nav-ink-bar {
+    color: #3D5AFE;
+    background: #3D5AFE;
+}
 
 /*.loginUsage section {
   margin: 1em;
