@@ -1,27 +1,22 @@
-.welcome {
-  text-align: center;
-  margin: 50px 0 30px 0;
+.loginUsage > h2 {
+    font-weight: bold;
 }
 
-.loginInput, .registerInput {
-  margin: 5px 0 10px 0;
-  border: 1px solid #CCCCCC;
-  width: 300px;
-  padding-left: 5px;
+input#input_0 {
+    width: 250px;
 }
 
-.registerLink {
-  margin-left: -10px;
-}
+/*.loginUsage section {
+  margin: 1em;
+  position: relative !important;
+}*/
 
-.cancel {
-  width: 100px;
-  text-align: center;
-  margin: 5px 0 0 0;
-}
+/*.loginUsage md-content {
+  margin-right: 7px; }*/
 
-.submitNewUser {
-  width: 194px;
-  text-align: center;
-  margin: 5px 0 0 25px;
-}
+/*.loginUsage section .md-button {
+  margin-top: 16px;
+  margin-bottom: 16px; }*/
+
+  /*.loginUsage md-grid-tile {
+    transition: all 400ms ease-out 50ms; }*/

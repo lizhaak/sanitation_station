@@ -1,27 +1,38 @@
-<h1 class="welcome">Welcome to Sanitation Station</h1>
+<!-- <h1 class="welcome">Welcome to Sanitation Station</h1> -->
 
-<div class="container">
-  <form>
-    <div class="row">
-      <div class="col-xs-6 col-xs-offset-4">
-        <input type="text" class="loginInput" name="username" placeholder="Username"/>
-      </div>
+<div layout="column" class="loginUsage">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <span flex></span>
+      <h2 class="md-title text-center">Welcome to Sanitation Station</h2>
+      <span flex></span>
     </div>
-    <div class="row">
-      <div class="col-xs-6 col-xs-offset-4">
-        <input type="password" class="loginInput" name="password" placeholder="Password"/>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-2 col-xs-offset-4">
-        <a href="#">Forgot Password</a>
-      </div>
-      <div class="col-xs-1">
-        <a href="#register" class="registerLink">Register</a>
-      </div>
-      <div class="col-xs-2">
-        <button class="loginButton">Log In</button>
-      </div>
-    </div>
-  </form>
+  </md-toolbar>
+
+  <br/>
+  <md-grid-list md-cols-xs="6" md-cols-sm="6" md-cols-md="8" md-cols-lg="8" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="12px" md-gutter-gt-sm="8px">
+    <md-grid-tile md-rowspan-xs="2" md-rowspan-sm="2" md-colspan="8" md-colspan-sm="6" md-colspan-xs="6">
+      <md-content layout-padding class="md-no-momentum">
+
+        <md-input-container class="md-block" flex-gt-sm="">
+          <input required="" type="text" placeholder="Username">
+        </md-input-container>
+
+
+        <md-input-container class="md-block">
+          <input required="" type="password" placeholder="Password">
+        </md-input-container>
+      </md-content>
+
+
+  </md-grid-tile>
+</md-grid-list>
+<md-content>
+  <section layout="row" layout-xs="column" layout-align="center center" layout-wrap="">
+    <md-button class="md-primary" ng-href="{{googleUrl}}" target="_blank">Forgot Password</md-button>
+    <md-button class="md-primary" ng-href="{{googleUrl}}" target="_blank">Register</md-button>
+    <md-button class="md-raised md-primary">Login</md-button>
+  </section>
+</md-content>
+
 </div>
