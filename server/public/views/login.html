@@ -1,37 +1,34 @@
-<!-- <h1 class="welcome">Welcome to Sanitation Station</h1> -->
-
 <div layout="column" class="loginUsage">
   <md-toolbar>
-    <div class="md-toolbar-tools">
+    <div class="welcome md-headline">
       <span flex></span>
-      <h2 class="md-title text-center">Welcome to Sanitation Station</h2>
+      <h2 class="text-center">Welcome to Sanitation Station</h2>
       <span flex></span>
     </div>
   </md-toolbar>
 
   <br/>
   <md-grid-list md-cols-xs="6" md-cols-sm="6" md-cols-md="8" md-cols-lg="8" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="2:2" md-gutter="12px" md-gutter-gt-sm="8px">
-    <md-grid-tile md-rowspan-xs="2" md-rowspan-sm="2" md-colspan="8" md-colspan-sm="6" md-colspan-xs="6">
+    <md-grid-tile md-rowspan-xs="2" md-rowspan-sm="2" md-rowspan-md="2" md-rowspan-lg="1" md-colspan="8" md-colspan-sm="6" md-colspan-xs="6">
       <md-content layout-padding class="md-no-momentum">
 
         <md-input-container class="md-block" flex-gt-sm="">
           <input required="" type="text" placeholder="Username">
         </md-input-container>
 
-
         <md-input-container class="md-block">
           <input required="" type="password" placeholder="Password">
         </md-input-container>
       </md-content>
 
-
   </md-grid-tile>
 </md-grid-list>
+
 <md-content>
   <section layout="row" layout-xs="column" layout-align="center center" layout-wrap="">
-    <md-button class="md-primary" ng-href="{{googleUrl}}" target="_blank">Forgot Password</md-button>
-    <md-button class="md-primary" ng-href="{{googleUrl}}" target="_blank">Register</md-button>
-    <md-button class="md-raised md-primary">Login</md-button>
+    <md-button md-colors="{color: 'blue-700'}" ng-href="#">Forgot Password</md-button>
+    <md-button md-colors="{color: 'blue-700'}" ng-href="#register">Register</md-button>
+    <md-button class="md-raised" md-colors="{background: 'blue-700'}" ng-click="login()">Login</md-button>
   </section>
 </md-content>
 

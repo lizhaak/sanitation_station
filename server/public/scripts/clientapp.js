@@ -8,7 +8,7 @@ ssApp.config(["$routeProvider", function($routeProvider) {
     }).
     when("/register", {
       templateUrl: "/views/register.html",
-      controller: "RegisterCtrl"
+      controller: "LoginCtrl"
     }).
     when("/admin/employees", {
       templateUrl: "/views/admin/employees.html",

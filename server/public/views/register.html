@@ -1,4 +1,4 @@
-<h1 class="welcome">Welcome to Sanitation Station</h1>
+<!-- <h1 class="welcome">Welcome to Sanitation Station</h1>
 
 <div class="container">
   <form>
@@ -41,4 +41,51 @@
       </div>
     </div>
   </form>
+</div> -->
+
+<div layout="column" class="loginUsage">
+  <md-toolbar>
+    <div class="welcome md-headline">
+      <span flex></span>
+      <h2 class="text-center">Welcome to Sanitation Station</h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+
+  <br/>
+  <md-grid-list md-cols-xs="6" md-cols-sm="6" md-cols-md="8" md-cols-lg="8" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="1:1" md-gutter="12px" md-gutter-gt-sm="8px">
+    <md-grid-tile md-rowspan-xs="5" md-rowspan-sm="4" md-rowspan-md="4" md-rowspan-lg="3" md-colspan="8" md-colspan-sm="6" md-colspan-xs="6">
+      <md-content layout-padding class="md-no-momentum">
+
+        <md-input-container class="md-block" flex-gt-sm="">
+          <input required="" type="text" name="first_name" placeholder="First Name">
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm="">
+          <input required="" type="text" name="last_name" placeholder="Last Name">
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm="">
+          <input required="" type="number" name="employee_id" placeholder="Employee #">
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm="">
+          <input required="" type="text" name="username" placeholder="Username">
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <input required="" type="password" name="password" placeholder="Password">
+        </md-input-container>
+      </md-content>
+
+  </md-grid-tile>
+</md-grid-list>
+
+<md-content>
+  <section layout="row" layout-xs="column" layout-align="center center" layout-wrap="">
+    <md-button class="md-raised" md-colors="{background: 'orange-800'}" ng-href="#login">Cancel</md-button>
+    <md-button class="md-raised" md-colors="{background: 'blue-700'}" ng-click="registerUser()">Submit New User</md-button>
+  </section>
+</md-content>
+
 </div>

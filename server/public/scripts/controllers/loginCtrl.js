@@ -4,6 +4,14 @@ ssApp.controller("LoginCtrl", ["$scope", "$http", "$location", function($scope, 
     username: '',
     password: ''
   };
+
+  $scope.login = function() {
+    console.log("login function works!");
+  }
+
+  $scope.registerUser = function() {
+    console.log("registerUser function works!");
+  }
 }]);
 
 ssApp.run(function() {
