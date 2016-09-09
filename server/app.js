@@ -2,6 +2,7 @@ var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
 var path = require("path");
+var NodeGeocoder = require('node-geocoder');
 
 // Still need to edit these:
 // var passport = require("");
@@ -11,6 +12,23 @@ var session = require("express-session");
 // var index = require("");
 // var user = require("");
 // var register = require("");
+var routes = require("./routes/routes");
+
+// var options = {
+//   provider: 'google',
+//
+//   // Optional depending on the providers
+//   httpAdapter: 'https', // Default
+//   apiKey: 'AIzaSyDF0hGyxgzZ4gcIPGCd_uRSGZ9UC4P8wXc', // for Mapquest, OpenCage, Google Premier
+//   formatter: null         // 'gpx', 'string', ...
+// };
+//
+// var geocoder = NodeGeocoder(options);
+//
+// // Using callback
+// geocoder.geocode('1303 Eagle Bluff Drive Hastings MN 55033', function(err, res) {
+//   console.log(res);
+// });
 
 
 // Body parser middleware
@@ -19,6 +37,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // Serve back static files
 app.use(express.static(path.join(__dirname, './public')));
+
+app.use("/routes", routes);
 
 // // Passport Session Configuration //
 // app.use(session({

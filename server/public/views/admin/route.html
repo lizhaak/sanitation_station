@@ -22,7 +22,8 @@
           <ng-map class="map" default-style="true" center="44.75,-92.87" zoom="11">
             <marker position="{{location.position}}"
               ng-repeat="location in vm.locations"
-              on-click="vm.showDetail(location)">
+              on-click="vm.showDetail(location)"
+              icon="{{location.icon}}">
             </marker>
 
             <info-window id="infoWindow">
