@@ -22,10 +22,10 @@
       <!-- External content for `<span>{{currentNavItem}}</span>` -->
       <div id="map">
 
-        <ng-map zoom="11" center="[44.75, -92.87]">
+        <!-- <ng-map zoom="11" center="[44.75, -92.87]">
 
           <custom-marker position="[44.75, -92.87]">
-            <div class="customer-marker">
+            <div class="customer-marker" visible="showModal">
               <div class="address">1303 Eagle Bluff Drive</div>
               <div class="address">Hastings, MN 55033</div>
               <div class="accountNum"><span>Account #: </span>1234</div>
@@ -40,13 +40,19 @@
               </div>
             </div>
           </custom-marker>
-          <marker position="[44.75, -92.87]" />
-          <marker position="[44.751826, -92.876275]" />
-          <marker position="[44.753769, -92.880137]" />
-          <!-- <shape name="circle" radius="400" center="[40.74,-74.18]" /> -->
-          <control name="overviewMap" opened="true" />
-        </ng-map>
 
+          <marker on-click="addressClicked()" ng-click="goLocation = true" position="[44.75, -92.87]" />
+          <marker on-click="addressClicked()" ng-click="goLocation = true" position="[44.751826, -92.876275]" />
+          <marker on-click="addressClicked()" ng-click="goLocation = true" position="[44.753769, -92.880137]" />
+
+
+
+
+          <control name="overviewMap" opened="true" />
+        </ng-map> -->
+
+
+        
       </div>
 
     </div>
