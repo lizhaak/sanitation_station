@@ -21,7 +21,7 @@ md-nav-bar md-nav-ink-bar {
     color: #3D5AFE;
     background: #3D5AFE;
 }
-#map {
+.map {
     height: 500px;
     width: 600px;
     margin: 25px;

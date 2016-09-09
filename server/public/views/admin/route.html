@@ -19,41 +19,29 @@
       <md-nav-item md-nav-click="goto('/admin/employees')" name="page3">Invoicing</md-nav-item>
     </md-nav-bar>
     <div class="ext-content">
-      <!-- External content for `<span>{{currentNavItem}}</span>` -->
-      <div id="map">
+          <ng-map class="map" default-style="true" center="44.75,-92.87" zoom="11">
+            <marker position="{{location.position}}"
+              ng-repeat="location in vm.locations"
+              on-click="vm.showDetail(location)">
+            </marker>
 
-        <!-- <ng-map zoom="11" center="[44.75, -92.87]">
-
-          <custom-marker position="[44.75, -92.87]">
-            <div class="customer-marker" visible="showModal">
-              <div class="address">1303 Eagle Bluff Drive</div>
-              <div class="address">Hastings, MN 55033</div>
-              <div class="accountNum"><span>Account #: </span>1234</div>
-              <div class="customerActive">
-                <button ng-click="activate()">Activate</button>
+            <info-window id="infoWindow">
+              <div> <!-- Took out ng-non-bindable="" in this div -->
+                <div class="address">{{vm.location.address}}</div>
+                <div class="address">{{vm.location.cityStateZip}}</div>
+                <div class="accountNum"><span>Account #: </span>{{vm.location.account_id}}</div>
+                <div class="customerActive">
+                  <button ng-click="vm.activateClicked()">Activate</button>
+                </div>
+                <div class="customerWarn">
+                  <button ng-click="vm.warningClicked()">Warning</button>
+                </div>
+                <div class="customerCancel">
+                  <button ng-click="vm.cancelClicked()">Cancel</button>
+                </div>
               </div>
-              <div class="customerWarn">
-                <button ng-click="warning()">Warning</button>
-              </div>
-              <div class="customerCancel">
-                <button ng-click="cancel()">Cancel</button>
-              </div>
-            </div>
-          </custom-marker>
-
-          <marker on-click="addressClicked()" ng-click="goLocation = true" position="[44.75, -92.87]" />
-          <marker on-click="addressClicked()" ng-click="goLocation = true" position="[44.751826, -92.876275]" />
-          <marker on-click="addressClicked()" ng-click="goLocation = true" position="[44.753769, -92.880137]" />
-
-
-
-
-          <control name="overviewMap" opened="true" />
-        </ng-map> -->
-
-
-        
-      </div>
+            </info-window>
+          </ng-map>
 
     </div>
   </md-content>
