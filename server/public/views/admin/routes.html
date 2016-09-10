@@ -1,0 +1,32 @@
+<div layout="column" class="loginUsage">
+  <md-toolbar>
+    <div class="welcome md-headline">
+      <span flex></span>
+      <h2 class="text-center">Sanitation Station</h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+
+  <div layout="row" layout-padding layout-align="space-around center">
+
+    <md-content class="md-padding">
+
+      <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+        <md-nav-item md-nav-href="/#/admin/employees" name="page1">Employees</md-nav-item>
+        <md-nav-item md-nav-href="/#/admin/routes" name="page2">Routes</md-nav-item>
+        <md-nav-item md-nav-href="/#/admin/invoicing" name="page3">Invoicing</md-nav-item>
+      </md-nav-bar>
+      <div class="ext-content">
+        <section layout="column" layout-align="center start" layout-margin>
+          <div ng-repeat="route in routes">
+            <a href="#/admin/routes/{{route.route_num}}">Route {{route.route_num}}</a>
+          </div>
+        </section>
+        <section layout="row" layout-xs="column" layout-align="end center" layout-wrap="">
+          <md-button class="md-raised" md-colors="{background: 'blue-700'}" ng-href="#new_route">Create New Route</md-button>
+        </section>
+      </div>
+
+    </md-content>
+  </div>
+</div>

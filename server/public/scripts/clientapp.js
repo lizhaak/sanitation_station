@@ -16,23 +16,23 @@ ssApp.config(["$routeProvider", function($routeProvider) {
     }).
     when("/admin/employees/:employee_id", {
       templateUrl: "/views/admin/employee.html",
-      controller: "AdminIndivdualEmployeeCtrl"
+      controller: "AdminEmployeesCtrl"
     }).
     when("/admin/routes", {
       templateUrl: "/views/admin/routes.html",
-      controller: "AdminRoutesCtrl"
+      controller: "RoutesCtrl"
     }).
-    // when("/admin/routes/:route_id", {
-    //   templateUrl: "/views/admin/route.html",
-    //   controller: "RouteCtrl"
-    // }).
-    when("/admin/routes/1", {
+    when("/admin/routes/:route_id", {
       templateUrl: "/views/admin/route.html",
       controller: "RouteCtrl"
     }).
-    when("/admin/routes/new_route", {
+    when("/admin/new_route", {
       templateUrl: "/views/admin/new_route.html",
-      controller: "AdminNewRouteCtrl"
+      controller: "RouteCtrl"
+    }).
+    when("/admin/invoicing", {
+      templateUrl: "/views/admin/employees.html",
+      controller: "AdminEmployeesCtrl"
     }).
     when("/employee/:employee_id/routes", {
       templateUrl: "/views/employee/routes.html",
