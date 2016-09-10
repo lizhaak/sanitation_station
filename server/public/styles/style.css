@@ -1,6 +1,7 @@
 .welcome {
     background-color: #00897B;
     text-align: center;
+    color: white;
 }
 /*button.md-raised.loginBtn.md-button.md-ink-ripple {
     background-color: #1565C0;
@@ -111,4 +112,32 @@ md-nav-bar md-nav-ink-bar {
 .address {
   font-size: 16px;
   margin: 0 0 2px 0;
+}
+.md-accent {
+  border-bottom: 1px solid;
+  border-radius: 0%;
+}
+.routeLink {
+  color: #388E3C;
+  padding: 5px;
+}
+.routeLink:hover {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 3px;
+  border: 1px solid #4CAF50;
+  text-decoration: none;
+  padding: 5px;
+}
+.employeeLink {
+  color: #3949AB;
+  padding: 5px;
+}
+.employeeLink:hover {
+  background-color: #3D5AFE;
+  color: white;
+  border-radius: 3px;
+  border: 1px solid #3D5AFE;
+  text-decoration: none;
+  padding: 5px;
 }

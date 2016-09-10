@@ -1,4 +1,4 @@
-<div layout="column" class="loginUsage">
+<div layout="column">
   <md-toolbar>
     <div class="welcome md-headline">
       <span flex></span>
@@ -9,15 +9,15 @@
 
   <br/>
 
-  <div layout="row" layout-padding layout-align="space-around center">
+  <div layout="row" layout-padding layout-align="space-around center" class="tabsdemoDynamicHeight">
 
 
   <md-content class="md-padding">
-    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
-      <md-nav-item md-nav-href="/#/admin/employees" name="page1">Employees</md-nav-item>
-      <md-nav-item md-nav-href="/#/admin/routes" name="page2">Routes</md-nav-item>
-      <md-nav-item md-nav-href="/#/admin/invoicing" name="page3">Invoicing</md-nav-item>
-    </md-nav-bar>
+    <section>
+      <md-button class="md-accent md-hue-2" md-colors="{color: 'purple-600'}" ng-href="#/admin/employees">Employees</md-button>
+      <md-button class="md-accent md-hue-2" md-colors="{color: 'purple-600'}" ng-href="#/admin/routes">Routes</md-button>
+      <md-button class="md-accent md-hue-2" md-colors="{color: 'purple-600'}" ng-href="#/admin/invoicing">Invoicing</md-button>
+    </section>
     <div class="ext-content">
           <ng-map class="map" default-style="true" center="44.75,-92.87" zoom="11">
             <marker position="{{location.position}}"
