@@ -12,9 +12,13 @@ ssApp.factory('DataFactory', ['$http', function($http) {
     return promise;
   };
 
+  // PUBLIC API object
   return {
     locationsData: function () {
       return locations;
+    },
+    retrieveData: function () {
+      return getData();
     }
   };
 

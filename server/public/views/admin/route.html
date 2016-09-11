@@ -20,8 +20,8 @@
     </section>
     <div class="ext-content">
           <ng-map class="map" default-style="true" center="44.75,-92.87" zoom="11">
-            <marker position="{{location.position}}"
-              ng-repeat="location in vm.locations"
+            <marker position="{{vm.position}}"
+              ng-repeat="location in locations"
               on-click="vm.showDetail(location)"
               icon="{{location.icon}}">
             </marker>
@@ -29,7 +29,7 @@
             <info-window id="infoWindow">
               <div> <!-- Took out ng-non-bindable="" in this div -->
                 <div class="address">{{vm.location.address}}</div>
-                <div class="address">{{vm.location.cityStateZip}}</div>
+                <div class="address">{{vm.location.city}}, {{vm.location.state}} {{vm.location.zip}}</div>
                 <div class="accountNum"><span>Account #: </span>{{vm.location.account_id}}</div>
                 <div class="customerActive">
                   <button ng-click="vm.activateClicked()">Activate</button>
@@ -43,6 +43,7 @@
               </div>
             </info-window>
           </ng-map>
+
 
     </div>
   </md-content>
