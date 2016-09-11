@@ -1,5 +1,7 @@
-ssApp.controller("RouteCtrl", ["$scope", "$http", "$location", "NgMap", function($scope, $http, $location, NgMap) {
+ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFactory', function($scope, $http, $location, NgMap, DataFactory) {
   console.log("RouteCtrl works");
+  $scope.dataFactory = DataFactory;
+  console.log('dataFactory: ', $scope.dataFactory);
 
   $scope.vm = this;
   NgMap.getMap().then(function(map) {
@@ -28,11 +30,16 @@ ssApp.controller("RouteCtrl", ["$scope", "$http", "$location", "NgMap", function
     console.log('status: ', $scope.vm.location.status);
   };
 
-  $scope.vm.locations = [
-    {account_id: 1234, address: '1303 Eagle Bluff Drive', cityStateZip: 'Hastings, MN 55033', position:[44.75,-92.87], icon: '/styles/darkgreen_MarkerS.png', status: 'active'},
-    {account_id: 1244, address: '1541 Test Driver', cityStateZip: 'Hastings, MN 55033', position:[44.72,-92.85], icon: '/styles/darkgreen_MarkerS.png', status: 'active'}
-  ];
-  $scope.vm.location = $scope.vm.locations[0];
+  // $scope.vm.locations = [
+  //   {account_id: 1234, address: '1303 Eagle Bluff Drive', cityStateZip: 'Hastings, MN 55033', position:[44.75,-92.87], icon: '/styles/darkgreen_MarkerS.png', status: 'active'},
+  //   {account_id: 1244, address: '1541 Test Driver', cityStateZip: 'Hastings, MN 55033', position:[44.72,-92.85], icon: '/styles/darkgreen_MarkerS.png', status: 'active'}
+  // ];
+
+$scope.locations = $scope.dataFactory.locationsData();
+
+console.log('locations', $scope.locations);
+
+  // $scope.vm.location = $scope.vm.locations[0];
 
   $scope.vm.showDetail = function(e, location) {
     $scope.vm.location = location;

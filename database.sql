@@ -10,13 +10,16 @@ CREATE TABLE users (
 );
 
 
-	CREATE TABLE locations (
-		id serial primary key,
-		account_id numeric(10) NOT NULL,
-		address varchar(50) NOT NULL,
-		city varchar(20) NOT NULL,
-		state varchar(2) NOT NULL,
-		zip numeric(5) NOT NULL,
-		icon varchar(30) NOT NULL,
-		status varchar(10) NOT NULL
-	);
+CREATE TABLE locations (
+	id serial primary key,
+	account_id numeric(10) NOT NULL,
+	address varchar(50) NOT NULL,
+	city varchar(20) NOT NULL,
+	state varchar(2) NOT NULL,
+	zip numeric(5) NOT NULL,
+	icon varchar(30) NOT NULL,
+	latitude decimal(10,5),
+	longitude decimal(10,5),
+	status varchar(10) NOT NULL,
+	route_id numeric(10)
+);

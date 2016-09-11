@@ -2,17 +2,17 @@ var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
 var path = require("path");
-var NodeGeocoder = require('node-geocoder');
+// var NodeGeocoder = require('node-geocoder');
 
 // Still need to edit these:
 // var passport = require("");
-var session = require("express-session");
+// var session = require("express-session");
 
 // Routes includes //
 // var index = require("");
 // var user = require("");
 // var register = require("");
-var routes = require("./routes/routes");
+var locations = require("./routes/locations");
 
 // var options = {
 //   provider: 'google',
@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 // Serve back static files
 app.use(express.static(path.join(__dirname, './public')));
 
-app.use("/routes", routes);
+app.use("/locations", locations);
 
 // // Passport Session Configuration //
 // app.use(session({
@@ -57,6 +57,10 @@ app.use("/routes", routes);
 // app.use('/register', register);
 // app.use('/user', user);
 // app.use('/*', index);
+
+// app.get("/jq", function(req,res,next){
+//     res.sendFile(path.join(__dirname, "./public/views/index.html"));
+// });
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, './public/views/index.html'));
