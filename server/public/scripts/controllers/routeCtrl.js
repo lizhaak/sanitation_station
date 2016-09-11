@@ -4,7 +4,7 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
   $scope.locations = [];
 
   $scope.vm = this;
-  
+
   NgMap.getMap().then(function(map) {
     console.log('map', map);
     $scope.vm.map = map;
@@ -41,11 +41,11 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
     $scope.locations = $scope.dataFactory.locationsData();
   }
 
-  $scope.vm.location = $scope.locations[0];
-  console.log('$scope.vm.location: ', $scope.vm.location);
+  $scope.vm.locations = $scope.locations;
+  console.log('$scope.vm.location: ', $scope.vm.locations);
 
-  $scope.vm.position = "[" + $scope.vm.location.latitude + "," + $scope.vm.location.longitude + "]";
-  console.log('$scope.position: ', $scope.vm.position);
+  // $scope.vm.position = "[" + $scope.vm.location.latitude + "," + $scope.vm.location.longitude + "]";
+  // console.log('$scope.position: ', $scope.vm.position);
 
   $scope.vm.showDetail = function(e, location) {
     $scope.vm.location = location;
