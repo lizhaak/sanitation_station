@@ -13,6 +13,7 @@ var path = require("path");
 // var user = require("");
 // var register = require("");
 var locations = require("./routes/locations");
+var routes = require("./routes/routes");
 
 // var options = {
 //   provider: 'google',
@@ -39,6 +40,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, './public')));
 
 app.use("/locations", locations);
+app.use("/routes", routes);
 
 // // Passport Session Configuration //
 // app.use(session({
