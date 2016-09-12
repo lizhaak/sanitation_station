@@ -18,8 +18,8 @@
       <md-button class="md-accent md-hue-2" md-colors="{color: 'purple-600'}" ng-href="#/admin/routes">Routes</md-button>
       <md-button class="md-accent md-hue-2" md-colors="{color: 'purple-600'}" ng-href="#/admin/invoicing">Invoicing</md-button>
     </section>
-    <div class="ext-content">
-          <ng-map class="map" default-style="true" center="44.75,-92.87" zoom="14">
+    <div class="ext-content" data-ng-init="init()">
+          <ng-map class="map" default-style="true" center="{{firstPosition}}" zoom="14">
             <marker ng-repeat="location in locations"
             position="[{{location.latitude}},{{location.longitude}}]"
               on-click="vm.showDetail(location)"

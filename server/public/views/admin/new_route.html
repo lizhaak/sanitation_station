@@ -6,22 +6,72 @@
       <span flex></span>
     </div>
   </md-toolbar>
+  </div>
 
   <br/>
 
-  <div layout="row" layout-padding layout-align="space-around center" class="tabsdemoDynamicHeight">
+  <div layout="row" layout-padding layout-align="space-around center">
 
 
-  <md-content class="md-padding">
-    <section>
+  <!-- <md-content class="md-padding" class="md-no-momentum" layout-padding> -->
+    <!-- <section class="navButtons" layout="row">
       <md-button class="md-accent md-hue-2" md-colors="{color: 'purple-600'}" ng-href="#/admin/employees">Employees</md-button>
       <md-button class="md-accent md-hue-2" md-colors="{color: 'purple-600'}" ng-href="#/admin/routes">Routes</md-button>
       <md-button class="md-accent md-hue-2" md-colors="{color: 'purple-600'}" ng-href="#/admin/invoicing">Invoicing</md-button>
-    </section>
+    </section> -->
     <div class="ext-content">
+      <md-input-container class="navButtons" layout="row" flex-gt-sm="">
+        <md-button class="md-accent md-hue-2" md-colors="{color: 'purple-600'}" ng-href="#/admin/employees">Employees</md-button>
+        <md-button class="md-accent md-hue-2" md-colors="{color: 'purple-600'}" ng-href="#/admin/routes">Routes</md-button>
+        <md-button class="md-accent md-hue-2" md-colors="{color: 'purple-600'}" ng-href="#/admin/invoicing">Invoicing</md-button>
+      </md-input-container>
 
-    </div>
-  </md-content>
+  <md-grid-list md-cols-xs="6" md-cols-sm="6" md-cols-md="8" md-cols-lg="8" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="1:1" md-gutter="12px" md-gutter-gt-sm="8px">
+    <md-grid-tile md-rowspan-xs="5" md-rowspan-sm="10" md-rowspan-md="13" md-rowspan-lg="3" md-colspan="8" md-colspan-sm="6" md-colspan-xs="6">
+      <md-content layout-padding class="md-no-momentum">
+
+        <form>
+
+
+        <md-input-container class="md-block" flex-gt-sm="">
+          <input required="" type="number" name="account_id" ng-model="newLocation.account_id" placeholder="Client Account #">
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm="">
+          <input required="" type="text" name="address"  ng-model="newLocation.address" placeholder="Street Address">
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm="">
+          <input required="" type="text" name="city"  ng-model="newLocation.city" placeholder="City">
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm="">
+          <input required="" type="text" name="state"  ng-model="newLocation.state" placeholder="State" maxlength="2">
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <input required="" type="number" name="zip"  ng-model="newLocation.zip" placeholder="Zip Code" maxlength="5">
+        </md-input-container>
+
+        <md-input-container class="md-block">
+          <input required="" type="number" name="route_id" ng-model="newLocation.route_id" placeholder="Route #">
+        </md-input-container>
+
+        <!-- <section layout="row" layout-xs="column" layout-align="center center" layout-wrap=""> -->
+          <md-button class="md-raised" md-colors="{background: 'red-500'}" ng-href="/#/admin/routes">Cancel</md-button>
+          <md-button class="md-raised" md-colors="{background: 'blue-700'}" ng-click="createNewLocation()">Save Location To Route</md-button>
+        <!-- </section> -->
+      </form>
+      </md-content>
+
+  </md-grid-tile>
+</md-grid-list>
+
+<!-- <md-content> -->
+
+<!-- </md-content> -->
+
 </div>
+<!-- </md-content> -->
 
 </div>
