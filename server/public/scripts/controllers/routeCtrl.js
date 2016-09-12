@@ -7,6 +7,7 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
   $scope.vm = this;
   $scope.firstPosition = "";
 
+
   NgMap.getMap().then(function(map) {
     console.log('map', map);
     $scope.vm.map = map;
@@ -33,14 +34,14 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
     console.log('status: ', $scope.vm.location.status);
   };
 
-  $scope.init = function() {
-    $scope.dataFactory.retrieveData().then(function() {
-      $scope.locations = $scope.dataFactory.locationsData();
-      $scope.firstPosition = $scope.locations[0].latitude + "," + $scope.locations[0].longitude;
-    });
-  }
+  // $scope.init = function() {
+  //   $scope.dataFactory.retrieveData().then(function() {
+  //     $scope.locations = $scope.dataFactory.locationsData();
+  //     $scope.firstPosition = $scope.locations[0].latitude + "," + $scope.locations[0].longitude;
+  //   });
+  // }
 
-  $scope.init();
+  // $scope.init();
 
   if($scope.dataFactory.locationsData() === undefined) {
     console.log('factory has no data, getting it now');
@@ -87,7 +88,7 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
 
     $http.post("/locations", location).then(function(data) {
       console.log("POST /locations", data);
-      $scope.init();
+      // $scope.init();
     });
   };
 

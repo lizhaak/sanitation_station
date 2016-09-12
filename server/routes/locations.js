@@ -61,14 +61,18 @@ router.post('/', function(req, res) {
 });
 
 
-router.get('/', function(req, res) {
+router.get('/:id', function(req, res) {
+  console.log('params: ', req.params.id);
+  var route_id = req.params.id;
+  console.log('route_id in get req: ', route_id);
   pg.connect(connectionString, function(err, client, done) {
     if (err) {
       console.log(err);
       res.sendStatus(500);
     }
 
-    client.query("SELECT * FROM locations",
+    client.query("SELECT * FROM locations WHERE route_id = $1",
+                  [route_id],
                   function(err, result) {
 
                     done();

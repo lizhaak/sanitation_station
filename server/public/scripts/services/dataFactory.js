@@ -2,9 +2,10 @@ ssApp.factory('DataFactory', ['$http', function($http) {
   var locations = undefined;
   var routes = undefined;
 
-  var getData = function() {
-    console.log('DF getting data from server!');
-    var promise = $http.get("/locations").then(function(response) {
+
+  var getData = function(id) {
+    console.log('DF getting data from server!', id);
+    var promise = $http.get("/locations/" + id).then(function(response) {
       console.log('response.data: ', response.data);
       locations = response.data;
       console.log("DF Async data response: ", locations);
@@ -36,8 +37,8 @@ ssApp.factory('DataFactory', ['$http', function($http) {
     locationsData: function () {
       return locations;
     },
-    retrieveData: function () {
-      return getData();
+    retrieveData: function (id) {
+      return getData(id);
     },
     addNewLocation: function(location) {
       return addLocation(location);

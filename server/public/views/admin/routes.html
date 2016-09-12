@@ -19,7 +19,7 @@
       <div class="ext-content" data-ng-init="initRoutes()">
         <section layout="column" layout-align="center start" layout-margin>
           <div ng-repeat="route in routes">
-            <a class="routeLink" href="#/admin/routes/{{route.route_id}}">Route {{route.route_id}}</a>
+            <a class="routeLink" href="#/admin/routes/{{route.route_id}}" ng-click="grabRouteID(route.route_id)">Route {{route.route_id}}</a>
           </div>
         </section>
         <section layout="row" layout-xs="column" layout-align="end center" layout-wrap="">
