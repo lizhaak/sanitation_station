@@ -52,7 +52,7 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
   $scope.locationURL = $location.$$url;
   $scope.routeNum = $scope.locationURL.replace(/\D/g,'');
   console.log('$scope.routeNum: ', $scope.routeNum);
-  // 
+  //
   // if($scope.dataFactory.locationsData() === undefined) {
   //   console.log('factory has no data, getting it now');
   //   $scope.dataFactory.retrieveData($scope.routeNum).then(function() {
@@ -102,6 +102,7 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
     $http.post("/locations", location).then(function(data) {
       console.log("POST /locations", data);
     });
+    $location.path("#/admin/routes/" + $scope.newLocation.route_id);
   };
 
 }]);

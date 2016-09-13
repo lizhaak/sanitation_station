@@ -18,7 +18,7 @@
       </section>
       <div class="ext-content"> <!-- data-ng-init="initRoutes()" -->
         <section layout="column" layout-align="center start" layout-margin>
-          <div ng-repeat="route in routes">
+          <div ng-repeat="route in routes | orderBy:'route_id'">
             <a class="routeLink" href="#/admin/routes/{{route.route_id}}">Route {{route.route_id}}</a> <!-- ng-click="grabRouteID(route.route_id)" -->
           </div>
         </section>
