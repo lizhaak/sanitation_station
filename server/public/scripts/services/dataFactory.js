@@ -1,12 +1,14 @@
 ssApp.factory('DataFactory', ['$http', function($http) {
   var locations = undefined;
   var routes = undefined;
+  var route_id = "";
 
 
   var getData = function(id) {
     console.log('DF getting data from server!', id);
-    var promise = $http.get("/locations/" + id).then(function(response) {
-      console.log('response.data: ', response.data);
+    route_id = id;
+    var promise = $http.get("/locations/" + route_id).then(function(response) {
+      console.log('locations response.data: ', response.data);
       locations = response.data;
       console.log("DF Async data response: ", locations);
     });
@@ -16,7 +18,7 @@ ssApp.factory('DataFactory', ['$http', function($http) {
   var getRoutes = function() {
     console.log('DF getting data from server for Specific Routes!');
     var promise = $http.get("/routes").then(function(response) {
-      console.log('response.data: ', response.data);
+      console.log('routes response.data: ', response.data);
       routes = response.data;
       console.log("DF Async data response: ", routes);
     });

@@ -9,7 +9,6 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
 
 
   NgMap.getMap().then(function(map) {
-    console.log('map', map);
     $scope.vm.map = map;
   });
 
@@ -43,16 +42,31 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
 
   // $scope.init();
 
-  if($scope.dataFactory.locationsData() === undefined) {
-    console.log('factory has no data, getting it now');
-    $scope.dataFactory.retrieveData().then(function() {
+  // $scope.locationTest = $scope.dataFactory.retrieveData().then(function() {
+  //   $scope.locationsTest1 = $scope.dataFactory.locationsData();
+  // });
+  //
+  // console.log('$scope.locationTest: ', $scope.locationTest);
+  // console.log('$scope.locationTest1: ', $scope.locationTest1);
+
+  $scope.locationURL = $location.$$url;
+  $scope.routeNum = $scope.locationURL.replace(/\D/g,'');
+  console.log('$scope.routeNum: ', $scope.routeNum);
+  // 
+  // if($scope.dataFactory.locationsData() === undefined) {
+  //   console.log('factory has no data, getting it now');
+  //   $scope.dataFactory.retrieveData($scope.routeNum).then(function() {
+  //     $scope.locations = $scope.dataFactory.locationsData();
+  //     console.log('$scope.locations 100: ', $scope.locations);
+  //     $scope.firstPosition = $scope.locations[0].latitude + "," + $scope.locations[0].longitude;
+  //   });
+  // } else {
+    $scope.dataFactory.retrieveData($scope.routeNum).then(function() {
       $scope.locations = $scope.dataFactory.locationsData();
+      console.log('$scope.locations 200: ', $scope.locations);
       $scope.firstPosition = $scope.locations[0].latitude + "," + $scope.locations[0].longitude;
     });
-  } else {
-    $scope.locations = $scope.dataFactory.locationsData();
-    $scope.firstPosition = $scope.locations[0].latitude + "," + $scope.locations[0].longitude;
-  }
+  // }
 
   $scope.vm.showDetail = function(e, location) {
     $scope.vm.location = location;
@@ -64,7 +78,6 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
   };
 
   $scope.objectToString = function(object){
-    console.log("within objectToString", $scope.stringLocation)
     $scope.stringAddress = (object.address + ", " + object.city + ", " + object.state + ", " + object.zip)
     console.log('objectToString response', $scope.stringLocation);
   };
@@ -88,7 +101,6 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
 
     $http.post("/locations", location).then(function(data) {
       console.log("POST /locations", data);
-      // $scope.init();
     });
   };
 

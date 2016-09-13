@@ -16,10 +16,10 @@
         <md-button class="md-accent md-hue-2" md-colors="{color: 'purple-600'}" ng-href="#/admin/routes">Routes</md-button>
         <md-button class="md-accent md-hue-2" md-colors="{color: 'purple-600'}" ng-href="#/admin/invoicing">Invoicing</md-button>
       </section>
-      <div class="ext-content" data-ng-init="initRoutes()">
+      <div class="ext-content"> <!-- data-ng-init="initRoutes()" -->
         <section layout="column" layout-align="center start" layout-margin>
           <div ng-repeat="route in routes">
-            <a class="routeLink" href="#/admin/routes/{{route.route_id}}" ng-click="grabRouteID(route.route_id)">Route {{route.route_id}}</a>
+            <a class="routeLink" href="#/admin/routes/{{route.route_id}}">Route {{route.route_id}}</a> <!-- ng-click="grabRouteID(route.route_id)" -->
           </div>
         </section>
         <section layout="row" layout-xs="column" layout-align="end center" layout-wrap="">
