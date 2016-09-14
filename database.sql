@@ -1,12 +1,11 @@
 CREATE TABLE users (
-	id serial primary key,
+	id SERIAL PRIMARY KEY,
 	first_name varchar(30) NOT NULL,
 	last_name varchar(30) NOT NULL,
-	employee_id number(5) NOT NULL,
-	username varchar(30) NOT NULL,
-	passwordHash binary(64) NOT NULL,
-	-- salt --, Not sure if I need this?
-	status varchar(10),
+	employee_id numeric(5) NOT NULL,
+	username varchar(100) NOT NULL UNIQUE,
+  password varchar(120) NOT NULL,
+	user_type varchar(10)
 );
 
 

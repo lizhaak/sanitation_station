@@ -6,7 +6,7 @@ Run `npm install` to start!
 
 ## Agenda
 
-1.
+1. Tables used in Database are listed in database.sql file.
 2.
 3.
 4.
@@ -17,6 +17,6 @@ Run `npm install` to start!
 ## Technologies Used
 
 *
-* 
+*
 *
 *

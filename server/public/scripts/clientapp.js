@@ -10,6 +10,10 @@ ssApp.config(["$routeProvider", function($routeProvider) {
       templateUrl: "/views/register.html",
       controller: "LoginCtrl"
     }).
+    when("/user", {
+      templateUrl: "/views/admin/employees.html",
+      controller: "UserCtrl"
+    }).
     when("/admin/employees", {
       templateUrl: "/views/admin/employees.html",
       controller: "AdminEmployeesCtrl"
@@ -34,7 +38,11 @@ ssApp.config(["$routeProvider", function($routeProvider) {
       templateUrl: "/views/admin/employees.html",
       controller: "AdminEmployeesCtrl"
     }).
-    when("/employee/:employee_id/routes", {
+    // when("/employee/:employee_id/routes", {
+    //   templateUrl: "/views/employee/routes.html",
+    //   controller: "EmpRoutesCtrl"
+    // }).
+    when("/employee/routes", {
       templateUrl: "/views/employee/routes.html",
       controller: "EmpRoutesCtrl"
     }).

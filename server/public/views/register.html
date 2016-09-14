@@ -11,25 +11,25 @@
   <md-grid-list md-cols-xs="6" md-cols-sm="6" md-cols-md="8" md-cols-lg="8" md-cols-gt-md="6" md-row-height-gt-md="1:1" md-row-height="1:1" md-gutter="12px" md-gutter-gt-sm="8px">
     <md-grid-tile md-rowspan-xs="5" md-rowspan-sm="4" md-rowspan-md="4" md-rowspan-lg="3" md-colspan="8" md-colspan-sm="6" md-colspan-xs="6">
       <md-content layout-padding class="md-no-momentum">
-
+        <h2 class="alertMessage" role="alert" ng-if="message != ''">{{message}}</h2>
         <md-input-container class="md-block" flex-gt-sm="">
-          <input required="" type="text" name="first_name" placeholder="First Name">
+          <input required="" type="text" name="first_name" placeholder="First Name" ng-model="user.first_name">
         </md-input-container>
 
         <md-input-container class="md-block" flex-gt-sm="">
-          <input required="" type="text" name="last_name" placeholder="Last Name">
+          <input required="" type="text" name="last_name" placeholder="Last Name" ng-model="user.last_name">
         </md-input-container>
 
         <md-input-container class="md-block" flex-gt-sm="">
-          <input required="" type="number" name="employee_id" placeholder="Employee #">
+          <input required="" type="number" name="employee_id" placeholder="Employee #" ng-model="user.employee_id">
         </md-input-container>
 
         <md-input-container class="md-block" flex-gt-sm="">
-          <input required="" type="text" name="username" placeholder="Username">
+          <input required="" type="text" name="username" placeholder="Username" ng-model="user.username">
         </md-input-container>
 
         <md-input-container class="md-block">
-          <input required="" type="password" name="password" placeholder="Password">
+          <input required="" type="password" name="password" placeholder="Password" ng-model="user.password">
         </md-input-container>
       </md-content>
 

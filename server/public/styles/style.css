@@ -146,3 +146,9 @@ md-nav-bar md-nav-ink-bar {
   background-color: #E1F5FE;
   color: #1565C0;
 }
+
+.alertMessage {
+  text-align: center;
+  /*background-color: #E1F5FE;*/
+  color: #1565C0;
+}
