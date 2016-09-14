@@ -100,6 +100,50 @@ md-nav-bar md-nav-ink-bar {
   background-color: white;
   color: #B0BEC5;
 }
+.trashDisplayStatus {
+  font-size: 14px;
+  margin: 10px 0 2px 0;
+  padding: 0 0 0 3px;
+}
+.trashDisplayStatus > span {
+  font-weight: bold;
+}
+.trashCollected > button {
+  width: 165px;
+  background-color: #2E7D32;
+  color: white;
+  margin: 2px 0;
+  border: 1px solid #2E7D32;
+  border-radius: 5px;
+}
+.trashCollected > button:hover {
+  background-color: white;
+  color: #2E7D32;
+}
+.noTrashCollected > button {
+  width: 165px;
+  background-color: #607D8B;
+  color: white;
+  margin: 2px 0;
+  border: 1px solid #607D8B;
+  border-radius: 5px;
+}
+.noTrashCollected > button:hover {
+  background-color: white;
+  color: #607D8B;
+}
+.overflowingBin > button {
+  width: 165px;
+  background-color: #E53935;
+  color: white;
+  margin: 2px 0;
+  border: 1px solid #E53935;
+  border-radius: 5px;
+}
+.overflowingBin > button:hover {
+  background-color: white;
+  color: #E53935;
+}
 .accountNum {
   font-size: 14px;
   background-color: #90CAF9;
@@ -146,7 +190,6 @@ md-nav-bar md-nav-ink-bar {
   background-color: #E1F5FE;
   color: #1565C0;
 }
-
 .alertMessage {
   text-align: center;
   /*background-color: #E1F5FE;*/

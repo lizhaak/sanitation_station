@@ -95,7 +95,9 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
       zip: $scope.newLocation.zip,
       icon: '/styles/darkgreen_MarkerS.png',
       status: 'active',
-      route_id: $scope.newLocation.route_id
+      route_id: $scope.newLocation.route_id,
+      trash_status: "",
+      trashDisplayStatus: ""
     };
     console.log('our address object is: ', location);
 

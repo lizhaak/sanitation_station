@@ -1,0 +1,51 @@
+<div layout="column">
+  <md-toolbar>
+    <div class="welcome md-headline">
+      <span flex></span>
+      <h2 class="text-center">Sanitation Station</h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
+
+  <br/>
+
+  <div layout="row" layout-padding layout-align="space-around center" class="tabsdemoDynamicHeight">
+
+  <md-content class="md-padding">
+    <section>
+      <md-button class="md-accent md-hue-2" md-colors="{color: 'purple-600'}" ng-href="#/employee/routes">Routes</md-button>
+    </section>
+    <div class="ext-content">
+          <ng-map class="map" default-style="true" center="{{firstPosition}}" zoom="14">
+            <marker ng-repeat="location in locations"
+            position="[{{location.latitude}},{{location.longitude}}]"
+              on-click="vm.showDetail(location)"
+              icon="{{location.icon}}">
+            </marker>
+
+            <info-window id="infoWindow">
+              <div>
+                <div class="address">{{vm.location.address}}</div>
+                <div class="address">{{vm.location.city}}, {{vm.location.state}} {{vm.location.zip}}</div>
+                <div class="accountNum"><span>Account #: </span>{{vm.location.account_id}}</div>
+                <div class="trashCollected">
+                  <button ng-click="vm.trashCollected()">Trash Collected</button>
+                </div>
+                <div class="noTrashCollected">
+                  <button ng-click="vm.noTrashCollected()">No Trash Collected</button>
+                </div>
+                <div class="overflowingBin">
+                  <button ng-click="vm.overflowingTrash()">Overflowing Bin</button>
+                </div>
+                <div class="trashDisplayStatus">
+                  <span>Status</span>: {{vm.location.trashDisplayStatus}}
+                </div>
+              </div>
+            </info-window>
+          </ng-map>
+
+    </div>
+  </md-content>
+</div>
+
+</div>

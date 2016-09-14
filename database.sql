@@ -20,5 +20,6 @@ CREATE TABLE locations (
 	latitude decimal(10,5),
 	longitude decimal(10,5),
 	status varchar(10) NOT NULL,
-	route_id numeric(10)
+	route_id numeric(10),
+	trash_status varchar(15)
 );
