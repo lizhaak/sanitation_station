@@ -7,26 +7,39 @@
     </div>
   </md-toolbar>
 
-  <div layout="row" layout-padding layout-align="space-around center" class="tabsdemoDynamicHeight">
+    <md-content>
+      <div class="md-padding" layout="row" layout-align="" flex-offset="35">
+        <div flex="50">
 
-    <md-content class="md-padding">
+          <div layout="column" flex>
 
-      <section>
-        <md-button class="md-accent md-hue-2" md-colors="{color: 'purple-600'}" ng-href="#/admin/employees">Employees</md-button>
-        <md-button class="md-accent md-hue-2" md-colors="{color: 'purple-600'}" ng-href="#/admin/routes">Routes</md-button>
-        <md-button class="md-accent md-hue-2" md-colors="{color: 'purple-600'}" ng-href="#/admin/invoicing">Invoicing</md-button>
-      </section>
-      <div class="ext-content"> <!-- data-ng-init="initRoutes()" -->
-        <section layout="column" layout-align="center start" layout-margin>
-          <div ng-repeat="route in routes | orderBy:'route_id'">
-            <a class="routeLink" href="#/admin/routes/{{route.route_id}}">Route {{route.route_id}}</a> <!-- ng-click="grabRouteID(route.route_id)" -->
+            <section>
+              <md-button class="md-accent md-hue-2" md-colors="{color: 'purple-600'}" ng-href="#/admin/employees">Employees</md-button>
+              <md-button class="md-accent md-hue-2" md-colors="{color: 'purple-600'}" ng-href="#/admin/routes">Routes</md-button>
+              <md-button class="md-accent md-hue-2" md-colors="{color: 'purple-600'}" ng-href="#/admin/invoicing">Invoicing</md-button>
+            </section>
+            <div class="ext-content"> <!-- data-ng-init="initRoutes()" -->
+              <section layout="column" layout-align="center start" layout-margin>
+                <div ng-repeat="route in routes | orderBy:'route_id'">
+                  <a class="routeLink" href="#/admin/routes/{{route.route_id}}">Route {{route.route_id}}</a> <!-- ng-click="grabRouteID(route.route_id)" -->
+                </div>
+              </section>
+              <section layout="row" layout-xs="column" layout-align="end end">
+                <md-button class="md-raised" md-colors="{background: 'blue-700'}" ng-href="#/admin/new_route">Create New Location</md-button>
+              </section>
+            </div>
           </div>
-        </section>
-        <section layout="row" layout-xs="column" layout-align="end center" layout-wrap="">
-          <md-button class="md-raised" md-colors="{background: 'blue-700'}" ng-href="#/admin/new_route">Create New Location</md-button>
-        </section>
-      </div>
+        </div>
 
+        <div flex="25" flex-offset="20">
+          <section class="userBox" ng-init="isLoggedIn()" layout="column">
+            <p class="userNameBox" flex>Welcome, {{userInfo.first_name}}!</p>
+            <p class="empNum" flex><span>Employee #</span>: {{userInfo.employee_id}}</p>
+            <md-button flex class="md-accent md-hue-2 logout" md-colors="{color: 'cyan-600'}" ng-click="logoutUser()">Log Out</md-button>
+          </section>
+        </div>
+
+      </div>
     </md-content>
-  </div>
+
 </div>

@@ -17,6 +17,7 @@ ssApp.factory('UserFactory', ['$http', function($http) {
           user = "notLoggedIn";
         }
       });
+    return promise;
   }
 
   var logout = function() {
@@ -24,10 +25,20 @@ ssApp.factory('UserFactory', ['$http', function($http) {
       console.log("logged out");
       // $location.path("/login");
     });
+  return promise;
   }
 
+  // locationsData: function () {
+  //   return locations;
+  // },
+  // retrieveData: function (id) {
+  //   return getData(id);
+  // }
+
   return {
-    user: user,
+    userData: function() {
+      return user;
+    },
     userLoggedIn: function() {
       return loggedIn();
     },
@@ -36,4 +47,9 @@ ssApp.factory('UserFactory', ['$http', function($http) {
     }
   }
 
-});
+}]);
+
+// user: user,
+// userLoggedIn: function() {
+//   return loggedIn();
+// },

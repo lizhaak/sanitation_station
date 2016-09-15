@@ -1,8 +1,18 @@
-ssApp.controller("RoutesCtrl", ["$scope", "$http", "$location", "DataFactory", function($scope, $http, $location, DataFactory) {
+ssApp.controller("RoutesCtrl", ["$scope", "$http", "$location", "DataFactory", "UserFactory", function($scope, $http, $location, DataFactory, UserFactory) {
   console.log("RoutesCtrl works");
   // $scope.routes = [{route_num: 1}, {route_num: 2}, {route_num: 3}];
   $scope.dataFactory = DataFactory;
+  $scope.userFactory = UserFactory;
   $scope.routes = [];
+
+  $scope.isLoggedIn = function() {
+    $scope.userFactory.userLoggedIn().then(function() {
+      // console.log("The person logged in: ", response);
+      // $scope.userInfo = response;
+      $scope.userInfo = $scope.userFactory.userData();
+      console.log("$scope.userInfo: ", $scope.userInfo);
+    });
+  }
 
   $scope.initRoutes = function() {
     $scope.dataFactory.retrieveRoutes().then(function() {
