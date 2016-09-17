@@ -37,7 +37,7 @@ router.post('/', function(req, res, next) {
     });
 });
 
-router.post('/', function(req, res) {
+router.put('/', function(req, res) {
   console.log('req.body: ', req.body);
   var address = req.body;
       pg.connect(connectionString, function(err, client, done) {
@@ -45,8 +45,8 @@ router.post('/', function(req, res) {
           console.log(err);
           res.sendStatus(500);
         }
-        client.query("INSERT INTO locations (account_id,address,city,state,zip,icon,latitude,longitude,status,route_id)VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)",
-          [address.account_id,address.address,address.city,address.state,address.zip,address.icon,address.latitude,address.longitude,address.status,address.route_id],
+        client.query("UPDATE locations SET icon = $1, status = $2 WHERE account_id = $3",
+          [address.icon,address.status,address.account_id],
           function(err, result) {
             done();
 

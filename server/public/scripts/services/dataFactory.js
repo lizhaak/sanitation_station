@@ -34,6 +34,18 @@ ssApp.factory('DataFactory', ['$http', function($http) {
     return promise;
   }
 
+  var updateAdminLocation = function(location) {
+    var promise = $http.put("/locations", location).then(function(response) {
+      console.log("DF PUT completed");
+      console.log("response in the DF: ", response);
+      var route_idPUT = response.config.data.route_id;
+      console.log("response in the DF: ", route_idPUT);
+      return getData(route_idPUT);
+    });
+
+    return promise;
+  }
+
   // PUBLIC API object
   return {
     locationsData: function () {
@@ -50,6 +62,9 @@ ssApp.factory('DataFactory', ['$http', function($http) {
     },
     retrieveRoutes: function () {
       return getRoutes();
+    },
+    updateLocation: function (location) {
+      return updateAdminLocation(location);
     }
   };
 

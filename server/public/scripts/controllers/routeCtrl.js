@@ -14,9 +14,16 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
 
   $scope.vm.activateClicked = function() {
     console.log('Activate click a link inside infoWindow');
+    console.log("Activate $scope.vm.location: ", $scope.vm.location);
     $scope.vm.location.icon = '/styles/darkgreen_MarkerS.png';
     $scope.vm.location.status = 'active';
     console.log('status: ', $scope.vm.location.status);
+
+    $scope.dataFactory.updateLocation($scope.vm.location).then(function() {
+      $scope.locations = $scope.dataFactory.locationsData();
+      console.log("$scope.locations here maybe: ", $scope.locations);
+
+    });
   };
 
   $scope.vm.warningClicked = function() {
@@ -24,6 +31,10 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
     $scope.vm.location.icon = '/styles/orange_MarkerS.png';
     $scope.vm.location.status = 'warning';
     console.log('status: ', $scope.vm.location.status);
+    $scope.dataFactory.updateLocation($scope.vm.location).then(function() {
+      $scope.locations = $scope.dataFactory.locationsData();
+      console.log("$scope.locations here maybe: ", $scope.locations);
+    });
   };
 
   $scope.vm.cancelClicked = function() {
@@ -31,6 +42,10 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
     $scope.vm.location.icon = '/styles/paleblue_MarkerS.png';
     $scope.vm.location.status = 'cancel';
     console.log('status: ', $scope.vm.location.status);
+    $scope.dataFactory.updateLocation($scope.vm.location).then(function() {
+      $scope.locations = $scope.dataFactory.locationsData();
+      console.log("$scope.locations here maybe: ", $scope.locations);
+    });
   };
 
   $scope.locationURL = $location.$$url;
