@@ -1,4 +1,4 @@
-ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFactory', function($scope, $http, $location, NgMap, DataFactory) {
+ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFactory', "userLogStatus", function($scope, $http, $location, NgMap, DataFactory, userLogStatus) {
   console.log("RouteCtrl works");
   $scope.dataFactory = DataFactory;
   $scope.locations = [];
@@ -6,6 +6,9 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
   $scope.stringLocation = "";
   $scope.vm = this;
   $scope.firstPosition = "";
+  $scope.stringAddress = "";
+
+  $scope.userInfo = userLogStatus;
 
 
   NgMap.getMap().then(function(map) {
@@ -49,6 +52,8 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
   // console.log('$scope.locationTest: ', $scope.locationTest);
   // console.log('$scope.locationTest1: ', $scope.locationTest1);
 
+  console.log("$location in routeCtrl.js", $location);
+
   $scope.locationURL = $location.$$url;
   $scope.routeNum = $scope.locationURL.replace(/\D/g,'');
   console.log('$scope.routeNum: ', $scope.routeNum);
@@ -61,12 +66,30 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
   //     $scope.firstPosition = $scope.locations[0].latitude + "," + $scope.locations[0].longitude;
   //   });
   // } else {
+
+  console.log('$scope.location uno: ', $scope.locations);
+
+  if($scope.routeNum !== "") {
     $scope.dataFactory.retrieveData($scope.routeNum).then(function() {
       $scope.locations = $scope.dataFactory.locationsData();
       console.log('$scope.locations 200: ', $scope.locations);
       $scope.firstPosition = $scope.locations[0].latitude + "," + $scope.locations[0].longitude;
     });
+  } else {
+    console.log("$scope.routeNum is null, so do nothing");
+  }
+
+  console.log('$scope.location dos: ', $scope.locations);
+
+  // if($location.url == "/admin/new_route") {
+  //   $scope.dataFactory.retrieveData($scope.routeNum).then(function() {
+  //     $scope.locations = $scope.dataFactory.locationsData();
+  //     console.log('$scope.locations 800: ', $scope.locations);
+  //     $scope.firstPosition = $scope.locations[0].latitude + "," + $scope.locations[0].longitude;
+  //   });
   // }
+  //
+  // console.log('$scope.location tres: ', $scope.locations);
 
   $scope.vm.showDetail = function(e, location) {
     $scope.vm.location = location;
@@ -79,32 +102,36 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
 
   $scope.objectToString = function(object){
     $scope.stringAddress = (object.address + ", " + object.city + ", " + object.state + ", " + object.zip)
-    console.log('objectToString response', $scope.stringLocation);
+    console.log('objectToString response', $scope.stringAddress);
   };
 
-  $scope.createNewLocation = function() {
+  $scope.createNewLocation = function(location) {
     console.log("add this new location to DB");
-    $scope.objectToString($scope.newLocation);
+    console.log("is this a location object?: ", location);
+    $scope.objectToString(location);
     var string = $scope.stringAddress;
-    var location = {
+    var locationObject = {
       location: string,
-      account_id: $scope.newLocation.account_id,
-      address: $scope.newLocation.address,
-      city: $scope.newLocation.city,
-      state: $scope.newLocation.state,
-      zip: $scope.newLocation.zip,
+      account_id: location.account_id,
+      address: location.address,
+      city: location.city,
+      state: location.state,
+      zip: location.zip,
       icon: '/styles/darkgreen_MarkerS.png',
       status: 'active',
-      route_id: $scope.newLocation.route_id,
+      route_id: location.route_id,
       trash_status: "",
       trashDisplayStatus: ""
     };
-    console.log('our address object is: ', location);
+    console.log('our address object is: ', locationObject);
 
-    $http.post("/locations", location).then(function(data) {
-      console.log("POST /locations", data);
+    $scope.dataFactory.addNewLocation(locationObject).then(function(response) {
+      console.log("addNewLocation response: ", response);
+      $scope.locations = $scope.dataFactory.locationsData();
+      console.log("$scope.locations line 114 in routeCtrl: ", $scope.locations);
+      $location.path("#/admin/routes/" + location.route_id);
     });
-    $location.path("#/admin/routes/" + $scope.newLocation.route_id);
+
   };
 
 }]);

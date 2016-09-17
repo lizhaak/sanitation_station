@@ -13,13 +13,14 @@ router.get('/', function(req, res) {
     client.query("SELECT DISTINCT route_id FROM locations",
                   function(err, result) {
 
-                    done();
+                    // done();
+                    client.end();
 
                     if (err) {
                       console.log("error: ", err);
                       res.sendStatus(500);
                     }
-                    console.log('result.rows', result.rows);
+                    // console.log('result.rows', result.rows);
                     res.send(result.rows);
                   });
   });

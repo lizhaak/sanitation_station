@@ -16,15 +16,9 @@ var options = {
 
 var geocoder = NodeGeocoder(options);
 
-// // Using callback
-// geocoder.geocode('1303 Eagle Bluff Drive Hastings MN 55033', function(err, res) {
-//   console.log(res);
-// });
-
-
 router.post('/', function(req, res, next) {
   var address = req.body
-  console.log('address req.body: ', address);
+  console.log('address req.body line 27: ', address);
   // console.log('')
   address.latitude = 0;
   address.longitude = 0;
@@ -32,21 +26,23 @@ router.post('/', function(req, res, next) {
   geocoder.geocode(address.location, function(err, res) {
     address.latitude = res[0].latitude
     address.longitude = res[0].longitude
-    console.log('before 2nd post',res);
+    console.log('before 2nd post line 35: ',res);
       next();
     });
 });
 
 router.post('/', function(req, res) {
-  console.log('req.body: ', req.body);
+  console.log('address req.body line 41: ', req.body);
+  console.log('address req.body.location line 41: ', req.body.location);
   var address = req.body;
+  var internalAddress = req.body.location;
       pg.connect(connectionString, function(err, client, done) {
         if(err) {
           console.log(err);
           res.sendStatus(500);
         }
-        client.query("INSERT INTO locations (account_id,address,city,state,zip,icon,latitude,longitude,status,route_id)VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)",
-          [address.account_id,address.address,address.city,address.state,address.zip,address.icon,address.latitude,address.longitude,address.status,address.route_id],
+        client.query("INSERT INTO locations (account_id,address,city,state,zip,icon,latitude,longitude,status,route_id,trash_status,trashDisplayStatus)VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)",
+          [internalAddress.account_id,internalAddress.address,internalAddress.city,internalAddress.state,internalAddress.zip,internalAddress.icon,address.latitude,address.longitude,internalAddress.status,internalAddress.route_id,internalAddress.trash_status,internalAddress.trashDisplayStatus],
           function(err, result) {
             done();
 

@@ -12,10 +12,10 @@
       <div flex="50">
         <div layout="column" flex>
 
-          <section>
+          <section flex flex-offset="20">
             <md-button class="md-accent md-hue-2" md-colors="{color: 'purple-600'}" ng-href="#/employee/routes">Routes</md-button>
           </section>
-          <div class="ext-content">
+          <div class="ext-content" flex flex-offset="20">
             <section layout="column" layout-align="center start" layout-margin>
               <div ng-repeat="route in routes | orderBy:'route_id'">
                 <a class="routeLink" href="#/employee/routes/{{route.route_id}}">Route {{route.route_id}}</a>

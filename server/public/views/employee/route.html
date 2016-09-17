@@ -8,44 +8,54 @@
   </md-toolbar>
 
   <br/>
+  <md-content>
+    <div class="md-padding" layout="row" layout-align="" flex-offset="30">
+      <div flex="65">
+        <div layout="column" flex>
 
-  <div layout="row" layout-padding layout-align="space-around center" class="tabsdemoDynamicHeight">
+          <section flex="30" flex-offset="20">
+            <md-button class="md-accent md-hue-2" md-colors="{color: 'purple-600'}" ng-href="#/employee/routes">Routes</md-button>
+          </section>
+          <div class="ext-content" flex>
+            <ng-map class="" default-style="true" center="{{firstPosition}}" zoom="14" flex="90" flex-offset="10">
+              <marker ng-repeat="location in locations"
+              position="[{{location.latitude}},{{location.longitude}}]"
+                on-click="vm.showDetail(location)"
+                icon="{{location.icon}}">
+              </marker>
 
-  <md-content class="md-padding">
-    <section>
-      <md-button class="md-accent md-hue-2" md-colors="{color: 'purple-600'}" ng-href="#/employee/routes">Routes</md-button>
-    </section>
-    <div class="ext-content">
-          <ng-map class="map" default-style="true" center="{{firstPosition}}" zoom="14">
-            <marker ng-repeat="location in locations"
-            position="[{{location.latitude}},{{location.longitude}}]"
-              on-click="vm.showDetail(location)"
-              icon="{{location.icon}}">
-            </marker>
+              <info-window id="infoWindow">
+                <div>
+                  <div class="address">{{vm.location.address}}</div>
+                  <div class="address">{{vm.location.city}}, {{vm.location.state}} {{vm.location.zip}}</div>
+                  <div class="accountNum"><span>Account #: </span>{{vm.location.account_id}}</div>
+                  <div class="trashCollected">
+                    <button ng-click="vm.trashCollected()">Trash Collected</button>
+                  </div>
+                  <div class="noTrashCollected">
+                    <button ng-click="vm.noTrashCollected()">No Trash Collected</button>
+                  </div>
+                  <div class="overflowingBin">
+                    <button ng-click="vm.overflowingTrash()">Overflowing Bin</button>
+                  </div>
+                  <div class="trashDisplayStatus">
+                    <span>Status</span>: {{vm.location.trashDisplayStatus}}
+                  </div>
+                </div>
+              </info-window>
+            </ng-map>
+          </div>
 
-            <info-window id="infoWindow">
-              <div>
-                <div class="address">{{vm.location.address}}</div>
-                <div class="address">{{vm.location.city}}, {{vm.location.state}} {{vm.location.zip}}</div>
-                <div class="accountNum"><span>Account #: </span>{{vm.location.account_id}}</div>
-                <div class="trashCollected">
-                  <button ng-click="vm.trashCollected()">Trash Collected</button>
-                </div>
-                <div class="noTrashCollected">
-                  <button ng-click="vm.noTrashCollected()">No Trash Collected</button>
-                </div>
-                <div class="overflowingBin">
-                  <button ng-click="vm.overflowingTrash()">Overflowing Bin</button>
-                </div>
-                <div class="trashDisplayStatus">
-                  <span>Status</span>: {{vm.location.trashDisplayStatus}}
-                </div>
-              </div>
-            </info-window>
-          </ng-map>
+        </div>
+      </div>
+      <div flex="20" flex-offset="10">
+        <section class="userBox" ng-init="isLoggedIn()" layout="column">
+          <p class="userNameBox" flex>Welcome, {{userInfo.first_name}}!</p>
+          <p class="empNum" flex><span>Employee #</span>: {{userInfo.employee_id}}</p>
+          <md-button flex class="md-accent md-hue-2 logout" md-colors="{color: 'cyan-600'}" ng-click="logoutUser()">Log Out</md-button>
+        </section>
+      </div>
 
     </div>
   </md-content>
-</div>
-
 </div>

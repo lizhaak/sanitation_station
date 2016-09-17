@@ -2,6 +2,7 @@ ssApp.factory('DataFactory', ['$http', function($http) {
   var locations = undefined;
   var routes = undefined;
   var route_id = "";
+  var routeID = "";
 
 
   var getData = function(id) {
@@ -26,9 +27,13 @@ ssApp.factory('DataFactory', ['$http', function($http) {
   };
 
   var addLocation = function(location) {
+    console.log("location in my dataFactory: ", location);
+    console.log("location in my dataFactory2: ", {location: location});
     var promise = $http.post("/locations", {location: location}).then(function(response) {
-      console.log("DF post completed");
-      return getData();
+      console.log("DF post completed - response: ", response);
+      console.log("DF post completed - response route_id: ", response.config.data.location.route_id);
+      routeID = response.config.data.location.route_id;
+      return getData(routeID);
     });
 
     return promise;

@@ -10,30 +10,46 @@ passport.serializeUser(function(user, done) {
 
 passport.deserializeUser(function(id, done) {
     //TODO SQL query
-    console.log("called deserializeUser");
+    console.log("called deserializeUser in user_sql.js");
+    // console.log("id in user_sql.js: ", id);
+
     pg.connect(connection, function (err, client) {
+        if(err) {
+            console.log('connection error: ', err);
+            // client.end();
+            done(err);
+        }
+
         var user = {};
-        console.log("called deserializeUser - pg");
+        // console.log("called deserializeUser - pg");
 
         client.query("SELECT * FROM users WHERE id = $1", [id], function(err, result) {
+            console.log("query block");
             client.end();
+
 
             // Handle Errors
             if(err) {
-                console.log(err);
+                console.log("query error ", err);
+                // client.end();
                 done(err);
             }
-
             user = result.rows[0];
+            // client.end();
 
             if(!user) {
                 // user not found
+                console.log("Hey incorrect Credentials!");
                 return done(null, false, {message: "Incorrect Credentials!"});
             } else {
                 // user found
-                console.log("User row in user_sql file: ", user);
+                // console.log("User row in user_sql file: ", user);
                 done(null, user);
+                console.log("after done(null, user)");
             }
+
+
+
         });
     });
 });
@@ -65,9 +81,12 @@ passport.use("local", new localStrategy({
             }
         });
 
+        console.log("whats going on lin 88: ");
         // After all the data is returned, close connection and return results
         query.on("end", function () {
+            console.log("hey this end function before: ");
             client.end();
+            console.log("hey this end function after: ");
         });
 
         // Handle Errors
