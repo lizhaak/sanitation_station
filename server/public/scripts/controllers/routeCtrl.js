@@ -33,40 +33,16 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
     console.log('status: ', $scope.vm.location.status);
   };
 
-  // $scope.init = function() {
-  //   $scope.dataFactory.retrieveData().then(function() {
-  //     $scope.locations = $scope.dataFactory.locationsData();
-  //     $scope.firstPosition = $scope.locations[0].latitude + "," + $scope.locations[0].longitude;
-  //   });
-  // }
-
-  // $scope.init();
-
-  // $scope.locationTest = $scope.dataFactory.retrieveData().then(function() {
-  //   $scope.locationsTest1 = $scope.dataFactory.locationsData();
-  // });
-  //
-  // console.log('$scope.locationTest: ', $scope.locationTest);
-  // console.log('$scope.locationTest1: ', $scope.locationTest1);
-
   $scope.locationURL = $location.$$url;
   $scope.routeNum = $scope.locationURL.replace(/\D/g,'');
   console.log('$scope.routeNum: ', $scope.routeNum);
-  //
-  // if($scope.dataFactory.locationsData() === undefined) {
-  //   console.log('factory has no data, getting it now');
-  //   $scope.dataFactory.retrieveData($scope.routeNum).then(function() {
-  //     $scope.locations = $scope.dataFactory.locationsData();
-  //     console.log('$scope.locations 100: ', $scope.locations);
-  //     $scope.firstPosition = $scope.locations[0].latitude + "," + $scope.locations[0].longitude;
-  //   });
-  // } else {
-    $scope.dataFactory.retrieveData($scope.routeNum).then(function() {
-      $scope.locations = $scope.dataFactory.locationsData();
-      console.log('$scope.locations 200: ', $scope.locations);
-      $scope.firstPosition = $scope.locations[0].latitude + "," + $scope.locations[0].longitude;
-    });
-  // }
+
+  $scope.dataFactory.retrieveData($scope.routeNum).then(function() {
+    $scope.locations = $scope.dataFactory.locationsData();
+    console.log('$scope.locations 200: ', $scope.locations);
+    $scope.firstPosition = $scope.locations[0].latitude + "," + $scope.locations[0].longitude;
+  });
+
 
   $scope.vm.showDetail = function(e, location) {
     $scope.vm.location = location;
