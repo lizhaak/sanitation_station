@@ -48,16 +48,21 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
     });
   };
 
+  // grabs the current url and strips it down to just the end number:
   $scope.locationURL = $location.$$url;
   $scope.routeNum = $scope.locationURL.replace(/\D/g,'');
   console.log('$scope.routeNum: ', $scope.routeNum);
 
-  $scope.dataFactory.retrieveData($scope.routeNum).then(function() {
-    $scope.locations = $scope.dataFactory.locationsData();
-    console.log('$scope.locations 200: ', $scope.locations);
-    $scope.firstPosition = $scope.locations[0].latitude + "," + $scope.locations[0].longitude;
-  });
-
+  // Do not try to retrieve locations data if not currently on a specific route page
+  if($scope.routeNum == "") {
+    console.log("do not try to retrieve locations data");
+  } else {
+    $scope.dataFactory.retrieveData($scope.routeNum).then(function() {
+      $scope.locations = $scope.dataFactory.locationsData();
+      console.log('$scope.locations 200: ', $scope.locations);
+      $scope.firstPosition = $scope.locations[0].latitude + "," + $scope.locations[0].longitude;
+    });
+  }
 
   $scope.vm.showDetail = function(e, location) {
     $scope.vm.location = location;
@@ -73,29 +78,30 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
     console.log('objectToString response', $scope.stringLocation);
   };
 
-  $scope.createNewLocation = function() {
-    console.log("add this new location to DB");
-    $scope.objectToString($scope.newLocation);
+  $scope.createNewLocation = function(location) {
+    $scope.objectToString(location);
     var string = $scope.stringAddress;
-    var location = {
+    var locationObject = {
       location: string,
-      account_id: $scope.newLocation.account_id,
-      address: $scope.newLocation.address,
-      city: $scope.newLocation.city,
-      state: $scope.newLocation.state,
-      zip: $scope.newLocation.zip,
+      account_id: location.account_id,
+      address: location.address,
+      city: location.city,
+      state: location.state,
+      zip: location.zip,
       icon: '/styles/darkgreen_MarkerS.png',
       status: 'active',
-      route_id: $scope.newLocation.route_id,
+      route_id: location.route_id,
       trash_status: "",
       trashDisplayStatus: ""
     };
-    console.log('our address object is: ', location);
+    console.log('our address object is: ', locationObject);
 
-    $http.post("/locations", location).then(function(data) {
-      console.log("POST /locations", data);
-    });
-    $location.path("#/admin/routes/" + $scope.newLocation.route_id);
-  };
+    $scope.dataFactory.addNewLocation(locationObject).then(function() {
+      $scope.locations = $scope.dataFactory.locationsData();
+      // $location.path("/admin/routes/" + locationObject.route_id);
+      $location.path("/admin/routes/");
+  });
+
+};
 
 }]);

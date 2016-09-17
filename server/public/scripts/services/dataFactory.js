@@ -28,7 +28,10 @@ ssApp.factory('DataFactory', ['$http', function($http) {
   var addLocation = function(location) {
     var promise = $http.post("/locations", {location: location}).then(function(response) {
       console.log("DF post completed");
-      return getData();
+      console.log("response in data factory 31: ", response);
+      var route_idPOST = response.config.data.location.route_id;
+      console.log("route_idPOST: ", route_idPOST);
+      return getData(route_idPOST);
     });
 
     return promise;

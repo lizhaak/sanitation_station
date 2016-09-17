@@ -37,6 +37,31 @@ router.post('/', function(req, res, next) {
     });
 });
 
+router.post('/', function(req, res) {
+  console.log('address req.body line 41: ', req.body);
+  console.log('address req.body.location line 41: ', req.body.location);
+  var address = req.body;
+  var internalAddress = req.body.location;
+      pg.connect(connectionString, function(err, client, done) {
+        if(err) {
+          console.log(err);
+          res.sendStatus(500);
+        }
+        client.query("INSERT INTO locations (account_id,address,city,state,zip,icon,latitude,longitude,status,route_id,trash_status,trashDisplayStatus)VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)",
+          [internalAddress.account_id,internalAddress.address,internalAddress.city,internalAddress.state,internalAddress.zip,internalAddress.icon,address.latitude,address.longitude,internalAddress.status,internalAddress.route_id,internalAddress.trash_status,internalAddress.trashDisplayStatus],
+          function(err, result) {
+            done();
+
+            if(err) {
+              console.log("query error: ", err);
+              res.sendStatus(500);
+            }
+            // created!
+            res.sendStatus(201);
+        });
+      });
+});
+
 router.put('/', function(req, res) {
   console.log('req.body: ', req.body);
   var address = req.body;
@@ -64,7 +89,7 @@ router.put('/', function(req, res) {
 router.get('/:id', function(req, res) {
   console.log('params: ', req.params.id);
   var route_id = req.params.id;
-  console.log('route_id in get req: ', route_id);
+  console.log('route_id in get req 92: ', route_id);
   pg.connect(connectionString, function(err, client, done) {
     if (err) {
       console.log(err);
