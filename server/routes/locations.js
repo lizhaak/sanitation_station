@@ -16,25 +16,25 @@ var options = {
 
 var geocoder = NodeGeocoder(options);
 
-// // Using callback
-// geocoder.geocode('1303 Eagle Bluff Drive Hastings MN 55033', function(err, res) {
-//   console.log(res);
-// });
-
 
 router.post('/', function(req, res, next) {
   var address = req.body
-  console.log('address req.body: ', address);
-  // console.log('')
+  console.log('address req.body line 22 in locations.js: ', address);
+  console.log('address req.body line 22 in locations.js: ', address.location.location);
+
   address.latitude = 0;
   address.longitude = 0;
 
-  geocoder.geocode(address.location, function(err, res) {
+  geocoder.geocode(address.location.location, function(err, res) {
     address.latitude = res[0].latitude
     address.longitude = res[0].longitude
+
     console.log('before 2nd post',res);
-      next();
-    });
+    console.log("address.latitude line 48: ", address.latitude);
+    console.log("address.longitude line 49: ", address.longitude);
+
+    next();
+  });
 });
 
 router.post('/', function(req, res) {

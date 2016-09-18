@@ -12,22 +12,20 @@ ssApp.controller("RoutesCtrl", ["$scope", "$http", "$location", "DataFactory", f
   //   });
   // }
 
-  $scope.initRoutes = function() {
     $scope.dataFactory.retrieveRoutes().then(function() {
       $scope.routes = $scope.dataFactory.routesData();
       console.log('$scope.routes 1: ', $scope.routes);
     });
-  }
 
-  $scope.initRoutes();
+  // $scope.initRoutes();
 
-  if($scope.dataFactory.routesData() === undefined) {
-    console.log('factory has no data, getting it now');
-    $scope.dataFactory.retrieveRoutes().then(function() {
-      $scope.routes = $scope.dataFactory.routesData();
-    });
-  } else {
-    $scope.routes = $scope.dataFactory.routesData();
-  }
+  // if($scope.dataFactory.routesData() === undefined) {
+  //   console.log('factory has no data, getting it now');
+  //   $scope.dataFactory.retrieveRoutes().then(function() {
+  //     $scope.routes = $scope.dataFactory.routesData();
+  //   });
+  // } else {
+  //   $scope.routes = $scope.dataFactory.routesData();
+  // }
 
 }]);

@@ -48,6 +48,7 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
     });
   };
 
+
   // grabs the current url and strips it down to just the end number:
   $scope.locationURL = $location.$$url;
   $scope.routeNum = $scope.locationURL.replace(/\D/g,'');
@@ -98,10 +99,8 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
 
     $scope.dataFactory.addNewLocation(locationObject).then(function() {
       $scope.locations = $scope.dataFactory.locationsData();
-      // $location.path("/admin/routes/" + locationObject.route_id);
-      $location.path("/admin/routes/");
-  });
-
-};
+        $location.path("/admin/routes/");
+      });
+    };
 
 }]);
