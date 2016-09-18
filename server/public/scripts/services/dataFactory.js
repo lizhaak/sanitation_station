@@ -2,6 +2,7 @@ ssApp.factory('DataFactory', ['$http', function($http) {
   var locations = undefined;
   var routes = undefined;
   var route_id = "";
+  var employees = undefined;
 
 
   var getData = function(id) {
@@ -49,6 +50,16 @@ ssApp.factory('DataFactory', ['$http', function($http) {
     return promise;
   }
 
+  var getEmployees = function() {
+    console.log('DF getting data from server for Specific Employees!');
+    var promise = $http.get("/employees").then(function(response) {
+      console.log('employees response.data: ', response.data);
+      employees = response.data;
+      console.log("DF Async data response: ", routes);
+    });
+    return promise;
+  };
+
   // PUBLIC API object
   return {
     locationsData: function () {
@@ -68,6 +79,12 @@ ssApp.factory('DataFactory', ['$http', function($http) {
     },
     updateLocation: function (location) {
       return updateAdminLocation(location);
+    },
+    employeesData: function () {
+      return employees;
+    },
+    retrieveEmployees: function () {
+        return getEmployees();
     }
   };
 

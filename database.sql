@@ -1,5 +1,5 @@
 CREATE TABLE users (
-	id SERIAL PRIMARY KEY,
+	id serial primary key,
 	first_name varchar(30) NOT NULL,
 	last_name varchar(30) NOT NULL,
 	employee_id numeric(5) NOT NULL,

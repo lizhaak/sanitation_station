@@ -12,10 +12,10 @@ ssApp.controller("RoutesCtrl", ["$scope", "$http", "$location", "DataFactory", f
   //   });
   // }
 
-    $scope.dataFactory.retrieveRoutes().then(function() {
-      $scope.routes = $scope.dataFactory.routesData();
-      console.log('$scope.routes 1: ', $scope.routes);
-    });
+  $scope.dataFactory.retrieveRoutes().then(function() {
+    $scope.routes = $scope.dataFactory.routesData();
+    console.log('$scope.routes 1: ', $scope.routes);
+  });
 
   // $scope.initRoutes();
 

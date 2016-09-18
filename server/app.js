@@ -12,6 +12,7 @@ var path = require("path");
 // var register = require("./routes/register");
 var locations = require("./routes/locations");
 var routes = require("./routes/routes");
+var employees = require("./routes/employees");
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -38,6 +39,7 @@ app.use(express.static(path.join(__dirname, './public')));
 // app.use("/user", user);
 app.use("/locations", locations);
 app.use("/routes", routes);
+app.use("/employees", employees);
 // app.use("/*", index);
 
 app.get('/', function (req, res) {

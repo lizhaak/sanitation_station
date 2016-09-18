@@ -1,5 +1,10 @@
-ssApp.controller("AdminEmployeesCtrl", ["$scope", "$http", "$location", function($scope, $http, $location) {
+ssApp.controller("AdminEmployeesCtrl", ["$scope", "$http", "$location", "DataFactory", function($scope, $http, $location, DataFactory) {
   console.log("AdminEmployeesCtrl works");
-  
-  $scope.employees = [{employee_id: 1}, {employee_id: 2}, {employee_id: 3}];
+  $scope.dataFactory = DataFactory;
+  $scope.employees = [];
+
+  $scope.dataFactory.retrieveEmployees().then(function() {
+    $scope.employees = $scope.dataFactory.employeesData();
+    console.log('$scope.employees in admin: ', $scope.employees);
+  });
 }]);
