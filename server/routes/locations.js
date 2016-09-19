@@ -85,6 +85,29 @@ router.put('/', function(req, res) {
       });
 });
 
+router.put('/trashstatus', function(req, res) {
+  console.log('req.body: ', req.body);
+  var address = req.body;
+      pg.connect(connectionString, function(err, client, done) {
+        if(err) {
+          console.log(err);
+          res.sendStatus(500);
+        }
+        client.query("UPDATE locations SET icon = $1, trash_status = $2, trashdisplaystatus = $3 WHERE account_id = $4",
+          [address.icon, address.trash_status, address.trashDisplayStatus, address.account_id],
+          function(err, result) {
+            done();
+
+            if(err) {
+              console.log("query error: ", err);
+              res.sendStatus(500);
+            }
+            // created!
+            res.sendStatus(201);
+        });
+      });
+});
+
 
 router.get('/:id', function(req, res) {
   console.log('params: ', req.params.id);

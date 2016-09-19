@@ -7,44 +7,39 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
   $scope.vm = this;
   $scope.firstPosition = "";
 
-
+  // Need this to generate infoWindows for each marker
   NgMap.getMap().then(function(map) {
     $scope.vm.map = map;
   });
 
+  // admin/route/:id activate link in infoWindow clicked
   $scope.vm.activateClicked = function() {
-    console.log('Activate click a link inside infoWindow');
     console.log("Activate $scope.vm.location: ", $scope.vm.location);
     $scope.vm.location.icon = '/styles/darkgreen_MarkerS.png';
     $scope.vm.location.status = 'active';
     console.log('status: ', $scope.vm.location.status);
-
     $scope.dataFactory.updateLocation($scope.vm.location).then(function() {
       $scope.locations = $scope.dataFactory.locationsData();
-      console.log("$scope.locations here maybe: ", $scope.locations);
-
     });
   };
 
+  // admin/route/:id warning link in infoWindow clicked
   $scope.vm.warningClicked = function() {
-    console.log('Warning click a link inside infoWindow');
     $scope.vm.location.icon = '/styles/orange_MarkerS.png';
     $scope.vm.location.status = 'warning';
     console.log('status: ', $scope.vm.location.status);
     $scope.dataFactory.updateLocation($scope.vm.location).then(function() {
       $scope.locations = $scope.dataFactory.locationsData();
-      console.log("$scope.locations here maybe: ", $scope.locations);
     });
   };
 
+  // admin/route/:id cancel link in infoWindow clicked
   $scope.vm.cancelClicked = function() {
-    console.log('Cancel click a link inside infoWindow');
     $scope.vm.location.icon = '/styles/paleblue_MarkerS.png';
     $scope.vm.location.status = 'cancel';
     console.log('status: ', $scope.vm.location.status);
     $scope.dataFactory.updateLocation($scope.vm.location).then(function() {
       $scope.locations = $scope.dataFactory.locationsData();
-      console.log("$scope.locations here maybe: ", $scope.locations);
     });
   };
 
@@ -74,6 +69,7 @@ ssApp.controller('RouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFac
     $scope.vm.map.hideInfoWindow('infoWindow');
   };
 
+  // concatenate location into one string for node-geocoder to grab the correct lattitude and longitude for this specific location
   $scope.objectToString = function(object){
     $scope.stringAddress = (object.address + ", " + object.city + ", " + object.state + ", " + object.zip)
     console.log('objectToString response', $scope.stringLocation);
