@@ -21,5 +21,20 @@ CREATE TABLE locations (
 	longitude decimal(10,5),
 	status varchar(10) NOT NULL,
 	route_id numeric(10),
+	trash_status varchar(15),
+	trashdisplaystatus varchar(20)
+);
+
+
+CREATE TABLE trashlog (
+	id serial primary key,
+	account_id numeric(10) NOT NULL,
+	updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	trash_status varchar(15)
 );
+
+
+/* this dumps the account_id and trash_status from the locations database to the trashlog database */
+-- INSERT INTO trashlog (account_id, trash_status)
+-- SELECT account_id, trash_status FROM locations
+-- WHERE route_id = $1;

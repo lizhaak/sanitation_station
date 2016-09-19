@@ -74,4 +74,13 @@ ssApp.controller('EmpRouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'Data
     $scope.vm.map.hideInfoWindow('infoWindow');
   };
 
+  $scope.logTrash = function() {
+    console.log("hey logTrash was clicked!");
+    console.log("$scope.routeNum in logTrash: ", $scope.routeNum);
+    $scope.dataFactory.logTrashStatusForDay($scope.routeNum).then(function() {
+      console.log("did this go through?!");
+      // Here I need to update trash_status and trashdisplaystatus in locations database based on route#
+    });
+  }
+
 }]);

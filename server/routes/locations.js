@@ -109,6 +109,31 @@ router.put('/trashstatus', function(req, res) {
 });
 
 
+router.post('/trashlog', function(req, res) {
+  console.log('req.body line 113 in locations.js: ', req.body);
+  console.log("req.body.routeID: ", req.body.routeID);
+  var route_id = req.body.routeID;
+      pg.connect(connectionString, function(err, client, done) {
+        if(err) {
+          console.log(err);
+          res.sendStatus(500);
+        }
+        client.query("INSERT INTO trashlog (account_id, trash_status) SELECT account_id, trash_status FROM locations WHERE route_id = $1",
+          [route_id],
+          function(err, result) {
+            done();
+
+            if(err) {
+              console.log("query error: ", err);
+              res.sendStatus(500);
+            }
+            // created!
+            res.sendStatus(201);
+        });
+      });
+});
+
+
 router.get('/:id', function(req, res) {
   console.log('params: ', req.params.id);
   var route_id = req.params.id;

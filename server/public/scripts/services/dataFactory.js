@@ -66,6 +66,15 @@ ssApp.factory('DataFactory', ['$http', function($http) {
     return promise;
   }
 
+  var logTrashStatus = function(routeID) {
+    console.log("routeID in logTrashStatus: ", routeID);
+    var promise = $http.post("/locations/trashlog", {routeID: routeID}).then(function(response) {
+      console.log("response in DF for logTrashStatus: ", response);
+    });
+
+    return promise;
+  }
+
   // PUBLIC API object
   return {
     locationsData: function () {
@@ -94,6 +103,9 @@ ssApp.factory('DataFactory', ['$http', function($http) {
     },
     updateTrashStatusLocation: function (location) {
       return updateTrashStatusInLocation(location);
+    },
+    logTrashStatusForDay: function (routeID) {
+      return logTrashStatus(routeID);
     }
   };
 
