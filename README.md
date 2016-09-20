@@ -16,7 +16,7 @@ Run `npm install` to start!
 
 ## Technologies Used
 
-*
-*
+* AngularJS
+* AngularJS Material
 *
 *
