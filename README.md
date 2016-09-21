@@ -18,5 +18,7 @@ Run `npm install` to start!
 
 * AngularJS
 * AngularJS Material
-*
+* Ng-Map
+* Node.js
+* Express.js
 *
