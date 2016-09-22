@@ -21,4 +21,5 @@ Run `npm install` to start!
 * Ng-Map
 * Node.js
 * Express.js
-*
+* Node-geocoder
+* Angular Routes
