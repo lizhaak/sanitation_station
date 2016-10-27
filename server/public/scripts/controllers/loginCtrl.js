@@ -1,5 +1,7 @@
-ssApp.controller("LoginCtrl", ["$scope", "$http", "$location", function($scope, $http, $location) {
+ssApp.controller("LoginCtrl", ["$scope", "$http", "$location", "UserFactory", function($scope, $http, $location, UserFactory) {
   console.log("LoginCtrl works");
+
+  $scope.userFactory = UserFactory;
 
   $scope.user = {
     first_name: "",
@@ -16,47 +18,29 @@ ssApp.controller("LoginCtrl", ["$scope", "$http", "$location", function($scope, 
   }
 
   $scope.login = function() {
-    console.log("login function works!");
-    if($scope.userLogin.username == "" || $scope.userLogin.password == "") {
-      $scope.message = "Enter your username and password!";
-    } else {
-      console.log("sending to server...", $scope.userLogin);
-      $http.post("/", $scope.userLogin).then(function(response) {
-        if(response.data.username) {
-          console.log("success: ", response.data);
-          $scope.message = "";
-          // location works with SPA (ng-route)
-          console.log('redirecting to user page');
-          if(response.data.user_type == "employee") {
-            $location.path("/employee/routes");
-          } else if (response.data.user_type == "webmaster") {
-            $location.path("/admin/routes");
-          }
-        } else {
-          console.log("failure: ", response);
-          $scope.message = "Wrong!!";
-        }
-      });
-    }
+    var user = $scope.userLogin;
+      console.log('preinfo', user);
+            $scope.userFactory.loginUser(user).then(function(response) {
+                console.log('login complete, response: ', response);
+                console.log("$$path: ", response.$$path);
+                $location.path(response.$$path);
+
+    });
   }
 
   $scope.registerUser = function() {
-    console.log("registerUser function works!");
-    if($scope.user.username == "" || $scope.user.password == "") {
-      $scope.message = "Choose a username and password!";
-    } else {
-      console.log("sending to server...", $scope.user);
-      $http.post("/register", $scope.user).then(function(response) {
-        console.log("success");
-        $scope.message = "";
-        $location.path("/login");
-      },
-      function(response) {
-        console.log("error");
-        $scope.message = "Please try again!"
-      });
-    }
+      var userWhole = $scope.user;
+      console.log('register user info: ', userWhole);
+      $scope.userFactory.registerUser(userWhole);
   }
+
+  $scope.logoutUser = function() {
+    $scope.userFactory.userLogout().then(function(response) {
+      console.log('logged out');
+      $location.path("/login");
+    });
+  };
+
 }]);
 
 ssApp.run(function() {

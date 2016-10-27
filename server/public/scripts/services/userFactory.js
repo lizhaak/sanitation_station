@@ -1,20 +1,18 @@
-ssApp.factory('UserFactory', ['$http', function($http) {
-  console.log('checking if user is logged in UserFactory');
+ssApp.factory('UserFactory', ['$http', '$location', function($http, $location) {
 
-  var user = "";
-
-  var loggedIn = function() {
-    var promise = $http.get("/user").then(function(response) {
+  var loggedIn = function(user) {
+    var promise = $http.post("/", user).then(function(response) {
+      console.log("response login: ", response);
       if(response.data.username) {
           // user has a current session on the server
-          // $scope.userName = response.data.username;
-          user = response.data;
-          console.log("User Data in UserFactory: ", user);
+          if(response.data.user_type == "employee") {
+            return $location.path("/employee/routes");
+          } else if (response.data.user_type == "webmaster"){
+            return $location.path("/admin/routes");
+          }
       } else {
-          // user has no sesssion, bounce them back to the login page
-          // $location.path("/login");
           console.log("User not logged in from UserFactory");
-          user = "notLoggedIn";
+          return false;
         }
       });
     return promise;
@@ -23,27 +21,33 @@ ssApp.factory('UserFactory', ['$http', function($http) {
   var logout = function() {
     var promise = $http.get("/user/logout").then(function(response) {
       console.log("logged out");
-      // $location.path("/login");
+      return true;
     });
   return promise;
   }
 
-  // locationsData: function () {
-  //   return locations;
-  // },
-  // retrieveData: function (id) {
-  //   return getData(id);
-  // }
+  var registeringUser = function(user) {
+      console.log('sending to server...', user);
+      var promise = $http.post('/register', user).then(function(response) {
+        console.log('success');
+        $location.path('/login');
+      },
+      function(response) {
+        console.log('error');
+        message = "Please try again."
+      });
+    return promise;
+    }
 
   return {
-    userData: function() {
-      return user;
-    },
-    userLoggedIn: function() {
-      return loggedIn();
+    loginUser: function(user) {
+      return loggedIn(user);
     },
     userLogout: function() {
       return logout();
+    },
+    registerUser: function(user) {
+      return registeringUser(user);
     }
   }
 

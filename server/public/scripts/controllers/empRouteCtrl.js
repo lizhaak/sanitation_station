@@ -1,11 +1,19 @@
-ssApp.controller('EmpRouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFactory', function($scope, $http, $location, NgMap, DataFactory) {
+ssApp.controller('EmpRouteCtrl', ['$scope', '$http', '$location', 'NgMap', 'DataFactory', 'UserFactory', function($scope, $http, $location, NgMap, DataFactory, UserFactory) {
   console.log("EmpRouteCtrl works");
   $scope.dataFactory = DataFactory;
+  $scope.userFactory = UserFactory;
   $scope.locations = [];
   $scope.newLocation = {};
   $scope.stringLocation = "";
   $scope.vm = this;
   $scope.firstPosition = "";
+
+  $scope.logoutUser = function() {
+    $scope.userFactory.userLogout().then(function(response) {
+      console.log('logged out');
+      $location.path("/login");
+    });
+  };
 
 
   NgMap.getMap().then(function(map) {
