@@ -5,6 +5,7 @@ ssApp.factory('DataFactory', ['$http', function($http) {
   var employees = undefined;
 
 
+  // Get a specific Route based on the id in the url, and find the separate client's locations
   var getData = function(id) {
     console.log('DF getting data from server!', id);
     route_id = id;

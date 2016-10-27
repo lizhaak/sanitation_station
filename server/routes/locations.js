@@ -62,6 +62,7 @@ router.post('/', function(req, res) {
       });
 });
 
+// Update the balloon icon and status of the client (active, warning, cancel)
 router.put('/', function(req, res) {
   console.log('req.body: ', req.body);
   var address = req.body;
@@ -71,7 +72,7 @@ router.put('/', function(req, res) {
           res.sendStatus(500);
         }
         client.query("UPDATE locations SET icon = $1, status = $2 WHERE account_id = $3",
-          [address.icon,address.status,address.account_id],
+          [address.icon, address.status, address.account_id],
           function(err, result) {
             done();
 
@@ -85,6 +86,7 @@ router.put('/', function(req, res) {
       });
 });
 
+// Update the balloon icon, trash status, and trash display status client from employee (collected, notCollected, overflowing)
 router.put('/trashstatus', function(req, res) {
   console.log('req.body: ', req.body);
   var address = req.body;
@@ -108,7 +110,7 @@ router.put('/trashstatus', function(req, res) {
       });
 });
 
-
+// creates the trash log for the trash each day, with a time stamp
 router.post('/trashlog', function(req, res) {
   console.log('req.body line 113 in locations.js: ', req.body);
   console.log("req.body.routeID: ", req.body.routeID);
@@ -137,7 +139,7 @@ router.post('/trashlog', function(req, res) {
 router.get('/:id', function(req, res) {
   console.log('params: ', req.params.id);
   var route_id = req.params.id;
-  console.log('route_id in get req 92: ', route_id);
+  console.log('route_id in get req 142: ', route_id);
   pg.connect(connectionString, function(err, client, done) {
     if (err) {
       console.log(err);
