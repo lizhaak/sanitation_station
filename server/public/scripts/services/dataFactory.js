@@ -16,6 +16,7 @@ ssApp.factory('DataFactory', ['$http', function($http) {
     return promise;
   };
 
+  // Gets distinct route numbers from DB to display back on the DOM (Route 1, Route 2, etc.)
   var getRoutes = function() {
     var promise = $http.get("/routes").then(function(response) {
       routes = response.data;
@@ -24,6 +25,7 @@ ssApp.factory('DataFactory', ['$http', function($http) {
     return promise;
   };
 
+  // Adds new location to locations table and use route_idPOST for this specific location to redirect to specific route number page
   var addLocation = function(location) {
     var promise = $http.post("/locations", {location: location}).then(function(response) {
       console.log("response in DF: ", response);
@@ -35,6 +37,7 @@ ssApp.factory('DataFactory', ['$http', function($http) {
     return promise;
   }
 
+  // Updates icon and client status based on what the Admin clicks (active, warning, cancel)
   var updateAdminLocation = function(location) {
     var promise = $http.put("/locations", location).then(function(response) {
       console.log("response in the DF: ", response);
@@ -46,6 +49,7 @@ ssApp.factory('DataFactory', ['$http', function($http) {
     return promise;
   }
 
+
   var getEmployees = function() {
     var promise = $http.get("/employees").then(function(response) {
       console.log('employees response.data: ', response.data);
@@ -55,6 +59,7 @@ ssApp.factory('DataFactory', ['$http', function($http) {
     return promise;
   };
 
+  // updates trash status from the employee's changes of the icon for each location in a route
   var updateTrashStatusInLocation = function(location) {
     console.log("updateTrash location: ", location);
     var promise = $http.put("/locations/trashstatus", location).then(function(response) {
@@ -67,6 +72,7 @@ ssApp.factory('DataFactory', ['$http', function($http) {
     return promise;
   }
 
+  // logs trash status for all locations in one route with a timestamp in trashlog table
   var logTrashStatus = function(routeID) {
     console.log("routeID in logTrashStatus: ", routeID);
     var promise = $http.post("/locations/trashlog", {routeID: routeID}).then(function(response) {

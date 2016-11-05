@@ -52,8 +52,3 @@ ssApp.factory('UserFactory', ['$http', '$location', function($http, $location) {
   }
 
 }]);
-
-// user: user,
-// userLoggedIn: function() {
-//   return loggedIn();
-// },
